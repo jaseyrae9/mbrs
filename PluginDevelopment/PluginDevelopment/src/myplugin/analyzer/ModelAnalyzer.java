@@ -6,6 +6,7 @@ import com.nomagic.uml2.ext.jmi.helpers.StereotypesHelper;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Element;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Enumeration;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Package;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class;
 
 import myplugin.generator.fmmodel.FMMicroservice;
 import myplugin.generator.fmmodel.FMModel;
@@ -38,7 +39,7 @@ public class ModelAnalyzer {
 	}
 
 	public void prepareModel() throws AnalyzeException {
-		/** @ToDo: Spremiti model za novu upotrebu, dakle očistiti sve liste itd... */
+		/** @ToDo: Spremiti model za novu upotrebu, dakle ocistiti sve liste itd... */
 		FMModel.getInstance().getMicroservices().clear();
 		processPackage(root, filePackage, null);
 	}
@@ -67,6 +68,9 @@ public class ModelAnalyzer {
 					if (ownedElement instanceof Enumeration) {
 						Enumeration enumeration = (Enumeration) ownedElement;
 						microservice.getEnumerations().add(EnumAnalyzer.analyzeEnumeration(enumeration));
+					} else if (ownedElement instanceof Class) {
+						Class magicClass = (Class) ownedElement;
+						microservice.getClasses().add(ClassAnalyzer.analyzeClass(magicClass));
 					}
 				} else {
 					// pretrazujemo glavni paket da bismo nasli one pakete koji su mikroservisi

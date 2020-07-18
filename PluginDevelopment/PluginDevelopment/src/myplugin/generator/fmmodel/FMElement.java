@@ -3,6 +3,10 @@ package myplugin.generator.fmmodel;
 public abstract class FMElement {
 	protected String name;
 
+	public FMElement() {
+		
+	}
+	
 	public FMElement(String name) {
 		super();
 		this.name = name;

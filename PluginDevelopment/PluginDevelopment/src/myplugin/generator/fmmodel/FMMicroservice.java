@@ -8,7 +8,8 @@ public class FMMicroservice extends FMElement {
 	private String dbUsername;
 	private String dbPassword;
 	private List<FMEnumeration> enumerations = new ArrayList<FMEnumeration>();
-
+	private List<FMClass> classes = new ArrayList<FMClass>();
+	
 	public FMMicroservice(String name) {
 		super(name);
 	}
@@ -50,5 +51,13 @@ public class FMMicroservice extends FMElement {
 
 	public void setEnumerations(List<FMEnumeration> enumerations) {
 		this.enumerations = enumerations;
+	}
+
+	public List<FMClass> getClasses() {
+		return classes;
+	}
+
+	public void setClasses(List<FMClass> classes) {
+		this.classes = classes;
 	}
 }

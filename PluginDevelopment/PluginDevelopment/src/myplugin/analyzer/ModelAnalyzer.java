@@ -54,7 +54,7 @@ public class ModelAnalyzer {
 			throw new AnalyzeException("Packages must have names!");
 
 		String packageName = packageOwner;
-		if (pack != root) {
+		if (pack != root && !microservice.getName().equals(pack.getName())) {
 			packageName += "." + pack.getName();
 		}
 
@@ -64,16 +64,7 @@ public class ModelAnalyzer {
 			for (Iterator<Element> it = pack.getOwnedElement().iterator(); it.hasNext();) {
 				Element ownedElement = it.next();
 
-				if (microservice != null) {
-					// analiziramo mikroservis da nadjemo klase i enumeracije
-					if (ownedElement instanceof Enumeration) {
-						Enumeration enumeration = (Enumeration) ownedElement;
-						microservice.getEnumerations().add(EnumAnalyzer.analyzeEnumeration(enumeration));
-					} else if (ownedElement instanceof Class) {
-						Class magicClass = (Class) ownedElement;
-						microservice.getClasses().add(ClassAnalyzer.analyzeClass(magicClass));
-					}
-				} else {
+				if (microservice == null) {
 					// pretrazujemo glavni paket da bismo nasli one pakete koji su mikroservisi
 					if (ownedElement instanceof Package) {
 						Package ownedPackage = (Package) ownedElement;
@@ -81,8 +72,21 @@ public class ModelAnalyzer {
 							FMMicroservice fmMicroservice = MicroserviceAnalyzer.analyzeMicroservice(ownedPackage);
 							FMModel.getInstance().getMicroservices().add(fmMicroservice);
 							// pozvati rekurzivnu analizu
-							processPackage(ownedPackage, packageName, fmMicroservice);
+							processPackage(ownedPackage, "", fmMicroservice);
 						}
+					}					
+				} else {
+					//nasli smo mikroservis, analiziramo njega i podpakete da bismo nasli klase i enumeracije
+					if (ownedElement instanceof Package) {
+						Package ownedPackage = (Package) ownedElement;
+						processPackage(ownedPackage, packageName, microservice);
+					}
+					if (ownedElement instanceof Enumeration) {
+						Enumeration enumeration = (Enumeration) ownedElement;
+						microservice.getEnumerations().add(EnumAnalyzer.analyzeEnumeration(enumeration, packageName));
+					} else if (ownedElement instanceof Class) {
+						Class magicClass = (Class) ownedElement;
+						microservice.getClasses().add(ClassAnalyzer.analyzeClass(magicClass));
 					}
 				}
 			}

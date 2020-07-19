@@ -8,6 +8,9 @@ public class GeneratorFactory {
 		if(name.equals(ApplicationYmlGenerator.class.getName())) {
 			return new ApplicationYmlGenerator(options);
 		}
+		else if(name.equals(EnumerationGenerator.class.getName())) {
+			return new EnumerationGenerator(options);
+		}
 		else {
 			return null;
 		}

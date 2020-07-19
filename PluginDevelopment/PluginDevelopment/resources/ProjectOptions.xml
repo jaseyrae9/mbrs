@@ -1,18 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <myplugin.generator.options.SerializableProjectOptions>
-   <typeMappings />
-   <generatorOptions>
-      <entry>
-         <string>myplugin.generator.ApplicationYmlGenerator</string>
-         <myplugin.generator.options.GeneratorOptions>
-            <outputPath>C:/temp/{0}/src/main/resources</outputPath>
-            <templateName>ApplicationYmlTemplate</templateName>
-            <templateDir>templates</templateDir>
-            <outputFileName>application.yml</outputFileName>
-            <overwrite>true</overwrite>
-            <filePackage>generated</filePackage>
-         </myplugin.generator.options.GeneratorOptions>
-      </entry>
-   </generatorOptions>
+	<typeMappings />
+	<generatorOptions>
+		<entry>
+			<string>myplugin.generator.ApplicationYmlGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/resources</outputPath>
+				<templateName>ApplicationYmlTemplate</templateName>
+				<templateDir>templates</templateDir>
+				<outputFileName>application.yml</outputFileName>
+				<overwrite>true</overwrite>
+				<filePackage>generated</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>myplugin.generator.EnumerationGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/generated/model</outputPath>
+				<templateName>EnumerationTemplate</templateName>
+				<templateDir>templates</templateDir>
+				<outputFileName>{0}.java</outputFileName>
+				<overwrite>true</overwrite>
+				<filePackage>generated</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+	</generatorOptions>
 </myplugin.generator.options.SerializableProjectOptions>
-

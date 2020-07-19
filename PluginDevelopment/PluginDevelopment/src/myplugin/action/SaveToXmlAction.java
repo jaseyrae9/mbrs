@@ -11,9 +11,13 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import com.nomagic.magicdraw.actions.MDAction;
+import com.nomagic.magicdraw.core.Application;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Package;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
+import myplugin.analyzer.AnalyzeException;
+import myplugin.analyzer.ModelAnalyzer;
 import myplugin.generator.fmmodel.FMModel;
 
 /**
@@ -27,6 +31,18 @@ public class SaveToXmlAction extends MDAction {
 	}
 
 	public void actionPerformed(ActionEvent evt) {
+		//provere da li je otvoren projekat itd
+		if (Application.getInstance().getProject() == null) return;
+		Package root = Application.getInstance().getProject().getModel();		
+		if (root == null) return;	
+				
+		ModelAnalyzer analyzer = new ModelAnalyzer(root, "micronaut");
+		try {
+			analyzer.prepareModel();
+		} catch (AnalyzeException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+		
 		if (JOptionPane.showConfirmDialog(null, "Do you want to save FM Model?") == JOptionPane.OK_OPTION) {
 			JFileChooser jfc = new JFileChooser();
 			if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {

@@ -31,7 +31,7 @@ public class GenerateAction extends MDAction{
 		Package root = Application.getInstance().getProject().getModel();		
 		if (root == null) return;	
 				
-		ModelAnalyzer analyzer = new ModelAnalyzer(root, "micronaut");	
+		ModelAnalyzer analyzer = new ModelAnalyzer(root, "");	
 		
 		try {
 			//napravi model u radnoj memoriji

@@ -28,6 +28,7 @@ public abstract class BasicGenerator {
 	private String filePackage;
 	private Configuration cfg;
 	private Template template;	
+	protected String microserviceName;
 	
 	public BasicGenerator(GeneratorOptions generatorOptions) {
 		this.setGeneratorOptions(generatorOptions);
@@ -55,22 +56,23 @@ public abstract class BasicGenerator {
 
 		cfg = new Configuration(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);		
 
+		//proveri postoji li templejt
 		final String tName = templateName + ".ftl";
 		try {
 			cfg.setDirectoryForTemplateLoading(new File(templateDir));
 			template = cfg.getTemplate(tName);
-			DefaultObjectWrapperBuilder builder = 
-					new DefaultObjectWrapperBuilder(cfg.getIncompatibleImprovements());
-			cfg.setObjectWrapper(builder.build());
-			File op = new File(outputPath);
-			if (!op.exists() && !op.mkdirs()) {
-					throw new IOException(
-							"An error occurred during folder creation " + outputPath);
-			}
+			DefaultObjectWrapperBuilder builder = new DefaultObjectWrapperBuilder(cfg.getIncompatibleImprovements());
+			cfg.setObjectWrapper(builder.build());			
 		} catch (IOException e) {
 			throw new IOException("Can't find template " + tName + ".", e);
 		}
-
+		
+		//napravi folder
+		String microservicePath = outputPath.replace("{0}", microserviceName); 
+		File op = new File(microservicePath);
+		if (!op.exists() && !op.mkdirs()) {
+			throw new IOException("An error occurred during basic folder creation " + microservicePath);
+		}
 	}
 
 	public Writer getWriter(String fileNamePart, String packageName) throws IOException {
@@ -78,8 +80,9 @@ public abstract class BasicGenerator {
 			packageName.replace(".", File.separator);		
 			filePackage = packageName;
 		}
-			
-		String fullPath = outputPath
+		
+		String microservicePath = outputPath.replace("{0}", microserviceName);
+		String fullPath = microservicePath
 				+ File.separator
 				+ (filePackage.isEmpty() ? "" : packageToPath(filePackage)
 						+ File.separator)
@@ -88,13 +91,9 @@ public abstract class BasicGenerator {
 		File of = new File(fullPath);
 		if (!of.getParentFile().exists()) {
 			if (!of.getParentFile().mkdirs()) {
-				throw new IOException("An error occurred during output folder creation "
-						+ outputPath);
+				throw new IOException("An error occurred during output folder creation " + microservicePath);
 			}
 		}
-
-		System.out.println(of.getPath());
-		System.out.println(of.getName());
 
 		if (!isOverwrite() && of.exists()) {
 			return null;

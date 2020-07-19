@@ -9,6 +9,10 @@ public class TypeMapping {
 	//libraryName: name used for import declaration  
 	private String libraryName;
 	
+	public TypeMapping() {
+		super();
+	}
+
 	public TypeMapping(String uMLType, String destType, String libraryName) {
 		super();
 		this.uMLType = uMLType;

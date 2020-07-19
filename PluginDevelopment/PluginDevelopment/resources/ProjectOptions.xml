@@ -1,1 +1,18 @@
-OUTPUT_PATH=C:/temp
+<?xml version="1.0" encoding="UTF-8"?>
+<myplugin.generator.options.SerializableProjectOptions>
+   <typeMappings />
+   <generatorOptions>
+      <entry>
+         <string>myplugin.generator.ApplicationYmlGenerator</string>
+         <myplugin.generator.options.GeneratorOptions>
+            <outputPath>C:/temp/{0}/src/main/resources</outputPath>
+            <templateName>ApplicationYmlTemplate</templateName>
+            <templateDir>templates</templateDir>
+            <outputFileName>application.yml</outputFileName>
+            <overwrite>true</overwrite>
+            <filePackage>generated</filePackage>
+         </myplugin.generator.options.GeneratorOptions>
+      </entry>
+   </generatorOptions>
+</myplugin.generator.options.SerializableProjectOptions>
+

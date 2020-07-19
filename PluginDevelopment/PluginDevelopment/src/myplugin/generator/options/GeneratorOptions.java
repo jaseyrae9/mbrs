@@ -4,13 +4,18 @@ package myplugin.generator.options;
  * have one instance of this class */
 
 public class GeneratorOptions  {
+	
 	private String outputPath; 
 	private String templateName;
 	private String templateDir;
 	private String outputFileName;
 	private Boolean overwrite;
-	private String filePackage;
+	private String filePackage;	
 	
+	public GeneratorOptions() {
+		super();
+	}
+
 	public GeneratorOptions(String outputPath, String templateName,
 			String templateDir, String outputFileName, Boolean overwrite,
 			String filePackage) {

@@ -8,7 +8,7 @@ import com.nomagic.magicdraw.actions.MDActionsCategory;
 
 public class MainMenuConfigurator implements AMConfigurator
 {
-	
+	private static String menu = "Micronaut Generation";
 	
 	/**
 	 * Actions that will be added to manager.
@@ -30,11 +30,11 @@ public class MainMenuConfigurator implements AMConfigurator
 	 */
 	public void configure(ActionsManager mngr)
 	{
-		ActionsCategory category = (ActionsCategory) mngr.getActionFor("Code Generation");
+		ActionsCategory category = (ActionsCategory) mngr.getActionFor(menu);
 		
 		if( category == null )
 		{
-			category = new MDActionsCategory("Code Generation", "Code Generation");
+			category = new MDActionsCategory(menu, menu);
 			category.setNested(true);
 			mngr.addCategory(category);
 		}

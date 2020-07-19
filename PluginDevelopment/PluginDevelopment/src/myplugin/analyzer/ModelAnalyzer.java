@@ -3,13 +3,14 @@ package myplugin.analyzer;
 import java.util.Iterator;
 
 import com.nomagic.uml2.ext.jmi.helpers.StereotypesHelper;
+import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Element;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Enumeration;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Package;
-import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class;
 
 import myplugin.generator.fmmodel.FMMicroservice;
 import myplugin.generator.fmmodel.FMModel;
+import myplugin.utils.Constants;
 
 /**
  * Model Analyzer takes necessary metadata from the MagicDraw model and puts it
@@ -76,10 +77,9 @@ public class ModelAnalyzer {
 					// pretrazujemo glavni paket da bismo nasli one pakete koji su mikroservisi
 					if (ownedElement instanceof Package) {
 						Package ownedPackage = (Package) ownedElement;
-						if (StereotypesHelper.getAppliedStereotypeByString(ownedPackage, "Microservice") != null) {
-							FMMicroservice fmMicroservice = new FMMicroservice(ownedPackage.getName());
+						if (StereotypesHelper.getAppliedStereotypeByString(ownedPackage, Constants.microserviceIdentifier) != null) {
+							FMMicroservice fmMicroservice = MicroserviceAnalyzer.analyzeMicroservice(ownedPackage);
 							FMModel.getInstance().getMicroservices().add(fmMicroservice);
-
 							// pozvati rekurzivnu analizu
 							processPackage(ownedPackage, packageName, fmMicroservice);
 						}

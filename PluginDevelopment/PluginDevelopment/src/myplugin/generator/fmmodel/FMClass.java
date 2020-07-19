@@ -1,6 +1,14 @@
 package myplugin.generator.fmmodel;
 
 public class FMClass extends FMType {
+	public static final String schemeField = "scheme";
+	public static final String tableNameField = "tableName";
+	public static final String generateCreateField = "generateCreate";
+	public static final String generateUpdateField = "generateUpdate";
+	public static final String generateDeleteField = "generateDelete";
+	public static final String generateReadOneField = "generateReadOne";
+	public static final String generateReadAllField = "generateReadAll";
+	
 	private String scheme;
 	private String tableName;
 	private boolean generateCreate;

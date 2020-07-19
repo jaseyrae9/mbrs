@@ -1,6 +1,5 @@
 package myplugin.analyzer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -11,43 +10,78 @@ import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
 import com.nomagic.uml2.ext.magicdraw.mdprofiles.Stereotype;
 
 import myplugin.generator.fmmodel.FMClass;
+import myplugin.utils.Constants;
 
 public class ClassAnalyzer {
 	public static FMClass analyzeClass(Class magicClass) {
 		FMClass fmClass = new FMClass();
 		fmClass.setName(magicClass.getName());
 
-		// ovo mozda prebaciti u neku drugu klasu / funkciju
-		Stereotype stereotype = StereotypesHelper.getAppliedStereotypeByString(magicClass, "Presistent Entity");
+		Stereotype stereotype = StereotypesHelper.getAppliedStereotypeByString(magicClass,
+				Constants.presistentEntityIdentifier);
 		JOptionPane.showMessageDialog(null, "Analiziranje klase ." + magicClass.getName());
 		if (stereotype != null) {
 			JOptionPane.showMessageDialog(null, "Pronasli stereotip  ." + magicClass.getName());
 			List<Property> tags = stereotype.getOwnedAttribute();
 			for (Property tag : tags) {
-				String tagName = tag.getName();
-				// preuzimanje vrednosti tagova
-				List<?> values = StereotypesHelper.getStereotypePropertyValue(magicClass, stereotype, tag.getName());
-
-				// if tag has tag values
-				if (values.size() > 0) {
-					List<String> tagValues = new ArrayList<String>();
-					
-					for(Object val: values) {
-	            		String newValue;
-	            		if(val instanceof String) {
-	            			newValue = "\"" + val + "\"";
-	            		} else {
-	            			newValue = val.toString();
-	            		}
-	            		tagValues.add(newValue);
-	        			JOptionPane.showMessageDialog(null, "Tag " + tagName + " value " + newValue);
-	            	}
-				}
-
+				createProperty(tag, fmClass, magicClass, stereotype);
 			}
-
-			return fmClass;
 		}
 		return fmClass;
+	}
+
+	private static void createProperty(Property tag, FMClass fmClass, Class magicClass, Stereotype stereotype) {
+		String tagName = tag.getName();
+
+		// preuzimanje vrednosti tagova
+		List<?> values = StereotypesHelper.getStereotypePropertyValue(magicClass, stereotype, tag.getName());
+
+		// if tag has tag values
+		if (values.size() > 0) {
+			switch (tagName) {
+			case FMClass.tableNameField:
+				if(values.get(0) instanceof String) {
+					String tableName = (String)values.get(0);
+					fmClass.setTableName(tableName);
+				}
+				break;
+			case FMClass.schemeField:
+				if(values.get(0) instanceof String) {
+					String scheme = (String)values.get(0);
+					fmClass.setScheme(scheme);
+				}
+				break;
+			case FMClass.generateCreateField:
+				if(values.get(0) instanceof Boolean) {
+					Boolean generateCreate= (Boolean)values.get(0);
+					fmClass.setGenerateCreate(generateCreate);
+				}
+				break;
+			case FMClass.generateUpdateField:
+				if(values.get(0) instanceof Boolean) {
+					Boolean generateUpdate= (Boolean)values.get(0);
+					fmClass.setGenerateUpdate(generateUpdate);
+				}
+				break;
+			case FMClass.generateDeleteField:
+				if(values.get(0) instanceof Boolean) {
+					Boolean generateDelete= (Boolean)values.get(0);
+					fmClass.setGenerateDelete(generateDelete);
+				}
+				break;
+			case FMClass.generateReadOneField:
+				if(values.get(0) instanceof Boolean) {
+					Boolean generateReadOne= (Boolean)values.get(0);
+					fmClass.setGenerateReadOne(generateReadOne);
+				}
+				break;
+			case FMClass.generateReadAllField:
+				if(values.get(0) instanceof Boolean) {
+					Boolean generateReadAll= (Boolean)values.get(0);
+					fmClass.setGenerateReadAll(generateReadAll);
+				}
+				break;
+			}
+		}
 	}
 }

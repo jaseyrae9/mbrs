@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FMMicroservice extends FMElement {
+	public static final String dbUrlField = "dbUrl";
+	public static final String dbUsernameField = "dbUsername";
+	public static final String dbPasswordField = "dbPassword";
+	
 	private String dbUrl;
 	private String dbUsername;
 	private String dbPassword;

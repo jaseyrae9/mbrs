@@ -1,4 +1,4 @@
-package myplugin.generator.repository;
+package myplugin.generator;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -8,15 +8,23 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 
 import freemarker.template.TemplateException;
-import myplugin.generator.BasicGenerator;
 import myplugin.generator.fmmodel.FMClass;
 import myplugin.generator.fmmodel.FMMicroservice;
 import myplugin.generator.fmmodel.FMModel;
 import myplugin.generator.options.GeneratorOptions;
 
-public abstract class RepositoryGenerator extends BasicGenerator {
 
-	public RepositoryGenerator(GeneratorOptions generatorOptions) {
+/**
+ * Prolazi kroz sve mikroservise. Za svaku perzistentu klasu
+ * koju mikroservis ima poziva generisanje templejta.
+ * 
+ * Pogodno za repozitorijume, servise, kontrolere, dto, mapere.
+ * Potrebno samo podesiti kontekst tako da ima odgovarajuće
+ * atribute.
+ */
+public abstract class PerClassGenerator extends BasicGenerator {
+
+	public PerClassGenerator(GeneratorOptions generatorOptions) {
 		super(generatorOptions);
 		// TODO Auto-generated constructor stub
 	}

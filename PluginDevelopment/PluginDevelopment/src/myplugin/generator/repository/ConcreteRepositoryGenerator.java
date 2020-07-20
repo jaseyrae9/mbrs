@@ -2,10 +2,11 @@ package myplugin.generator.repository;
 
 import java.util.Map;
 
+import myplugin.generator.PerClassGenerator;
 import myplugin.generator.fmmodel.FMClass;
 import myplugin.generator.options.GeneratorOptions;
 
-public class ConcreteRepositoryGenerator extends RepositoryGenerator {
+public class ConcreteRepositoryGenerator extends PerClassGenerator {
 
 	public ConcreteRepositoryGenerator(GeneratorOptions generatorOptions) {
 		super(generatorOptions);

@@ -5,6 +5,8 @@ import myplugin.generator.model.EnumerationGenerator;
 import myplugin.generator.options.GeneratorOptions;
 import myplugin.generator.repository.AbstractRepositoryGenerator;
 import myplugin.generator.repository.ConcreteRepositoryGenerator;
+import myplugin.generator.service.AbstractServiceGenerator;
+import myplugin.generator.service.ConcreteServiceGenerator;
 
 public class GeneratorFactory {
 
@@ -20,6 +22,12 @@ public class GeneratorFactory {
 		}
 		else if(name.equals(ConcreteRepositoryGenerator.class.getSimpleName())) {
 			return new ConcreteRepositoryGenerator(options);
+		}
+		else if(name.equals(AbstractServiceGenerator.class.getSimpleName())) {
+			return new AbstractServiceGenerator(options);
+		}
+		else if(name.equals(ConcreteServiceGenerator.class.getSimpleName())) {
+			return new ConcreteServiceGenerator(options);
 		}
 		else {
 			return null;

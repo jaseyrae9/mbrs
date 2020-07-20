@@ -1,4 +1,4 @@
-package hand.repository${package};
+package handwritten.repository${package};
 
 import generated.repository${package}.Abstract${name}Repository;
 import io.micronaut.data.annotation.Repository;

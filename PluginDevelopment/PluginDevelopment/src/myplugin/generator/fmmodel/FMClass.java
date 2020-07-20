@@ -20,6 +20,11 @@ public class FMClass extends FMType {
 
 	public FMClass() {
 		isPersistant = false;
+		generateCreate = true;
+		generateUpdate = true;
+		generateDelete = true;
+		generateReadOne = true;
+		generateReadAll = true;
 	}
 
 	public boolean isPersistant() {

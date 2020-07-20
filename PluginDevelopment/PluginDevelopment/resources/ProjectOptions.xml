@@ -46,5 +46,27 @@
 				<filePackage>handwritten</filePackage>
 			</myplugin.generator.options.GeneratorOptions>
 		</entry>
+		<entry>
+			<string>AbstractServiceGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/generated/service</outputPath>
+				<templateName>AbstractService</templateName>
+				<templateDir>templates\service</templateDir>
+				<outputFileName>Abstract{0}Service.java</outputFileName>
+				<overwrite>true</overwrite>
+				<filePackage>generated</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>ConcreteServiceGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/handwritten/service</outputPath>
+				<templateName>ConcreteService</templateName>
+				<templateDir>templates\service</templateDir>
+				<outputFileName>{0}Service.java</outputFileName>
+				<overwrite>false</overwrite>
+				<filePackage>handwritten</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
 	</generatorOptions>
 </myplugin.generator.options.SerializableProjectOptions>

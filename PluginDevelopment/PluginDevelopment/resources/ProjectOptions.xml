@@ -58,6 +58,13 @@
 			<destinationFilename>PersistenceExceptionHandler.java</destinationFilename>
 			<overwrite>false</overwrite>
 		</myplugin.generator.options.StaticResource>
+		<myplugin.generator.options.StaticResource>
+			<sourceFolder>static</sourceFolder>
+			<sourceFilename>MapperCatalogue.java</sourceFilename>
+			<destinationFolder>C:/temp/{0}/src/main/java/handwritten/mapper</destinationFolder>
+			<destinationFilename>MapperCatalogue.java</destinationFilename>
+			<overwrite>false</overwrite>
+		</myplugin.generator.options.StaticResource>
 	</staticResources>
 	<generatorOptions>
 		<entry>
@@ -146,6 +153,39 @@
 				<outputFileName>{0}Controller.java</outputFileName>
 				<overwrite>false</overwrite>
 				<filePackage>handwritten</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>AbstractMapperGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/generated/mapper</outputPath>
+				<templateName>AbstractMapper</templateName>
+				<templateDir>templates\mapper</templateDir>
+				<outputFileName>Abstract{0}Mapper.java</outputFileName>
+				<overwrite>true</overwrite>
+				<filePackage>generated</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>ConcreteMapperGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/handwritten/mapper</outputPath>
+				<templateName>ConcreteMapper</templateName>
+				<templateDir>templates\mapper</templateDir>
+				<outputFileName>{0}Mapper.java</outputFileName>
+				<overwrite>false</overwrite>
+				<filePackage>handwritten</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>AbstractMapperCatalogueGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/generated/mapper</outputPath>
+				<templateName>AbstractMapperCatalogue</templateName>
+				<templateDir>templates\mapper</templateDir>
+				<outputFileName>AbstractMapperCatalogue.java</outputFileName>
+				<overwrite>true</overwrite>
+				<filePackage>generated</filePackage>
 			</myplugin.generator.options.GeneratorOptions>
 		</entry>
 	</generatorOptions>

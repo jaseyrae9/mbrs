@@ -68,5 +68,27 @@
 				<filePackage>handwritten</filePackage>
 			</myplugin.generator.options.GeneratorOptions>
 		</entry>
+		<entry>
+			<string>AbstractControllerGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/generated/controller</outputPath>
+				<templateName>AbstractController</templateName>
+				<templateDir>templates\controller</templateDir>
+				<outputFileName>Abstract{0}Controller.java</outputFileName>
+				<overwrite>true</overwrite>
+				<filePackage>generated</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>ConcreteControllerGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/handwritten/controller</outputPath>
+				<templateName>ConcreteController</templateName>
+				<templateDir>templates\controller</templateDir>
+				<outputFileName>{0}Controller.java</outputFileName>
+				<overwrite>false</overwrite>
+				<filePackage>handwritten</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
 	</generatorOptions>
 </myplugin.generator.options.SerializableProjectOptions>

@@ -1,6 +1,8 @@
 package myplugin.generator;
 
 import myplugin.generator.additionalfiles.ApplicationYmlGenerator;
+import myplugin.generator.controller.AbstractControllerGenerator;
+import myplugin.generator.controller.ConcreteControllerGenerator;
 import myplugin.generator.model.EnumerationGenerator;
 import myplugin.generator.options.GeneratorOptions;
 import myplugin.generator.repository.AbstractRepositoryGenerator;
@@ -28,6 +30,12 @@ public class GeneratorFactory {
 		}
 		else if(name.equals(ConcreteServiceGenerator.class.getSimpleName())) {
 			return new ConcreteServiceGenerator(options);
+		}
+		else if(name.equals(AbstractControllerGenerator.class.getSimpleName())) {
+			return new AbstractControllerGenerator(options);
+		}
+		else if(name.equals(ConcreteControllerGenerator.class.getSimpleName())) {
+			return new ConcreteControllerGenerator(options);
 		}
 		else {
 			return null;

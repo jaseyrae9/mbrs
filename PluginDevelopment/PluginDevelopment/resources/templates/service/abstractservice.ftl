@@ -7,7 +7,7 @@ import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
 
 import generated.model${package}.${name};
-import handwritten.repository${package}.${name};
+import handwritten.repository${package}.${name}Repository;
 
 public abstract class Abstract${name}Service{	
 	@Inject

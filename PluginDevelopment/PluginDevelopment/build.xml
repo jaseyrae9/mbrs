@@ -42,5 +42,8 @@
 		<copy todir="${MAGICDRAW_HOME}/plugins/myplugin/templates">
 			<fileset dir="resources/templates" includes="**"/>
 		</copy>
+		<copy todir="${MAGICDRAW_HOME}/plugins/myplugin/static">
+			<fileset dir="resources/static" includes="**"/>
+		</copy>
 	</target>
 </project>

@@ -15,10 +15,12 @@ public class SerializableProjectOptions implements Serializable {
 	
 	private List<TypeMapping> typeMappings = new ArrayList<TypeMapping>();
 	private Map<String, GeneratorOptions> generatorOptions = new HashMap<String, GeneratorOptions>();
+	private List<StaticResource> staticResources = new ArrayList<StaticResource>();
 	
 	public SerializableProjectOptions(ProjectOptions projectOptions) {
 		typeMappings = projectOptions.getTypeMappings();
 		generatorOptions = projectOptions.getGeneratorOptions();
+		staticResources = projectOptions.getStaticResources();
 	}
 	
 	public SerializableProjectOptions() {
@@ -39,5 +41,13 @@ public class SerializableProjectOptions implements Serializable {
 
 	public void setGeneratorOptions(Map<String, GeneratorOptions> generatorOptions) {
 		this.generatorOptions = generatorOptions;
+	}
+
+	public List<StaticResource> getStaticResources() {
+		return staticResources;
+	}
+
+	public void setStaticResources(List<StaticResource> staticResources) {
+		this.staticResources = staticResources;
 	}
 }

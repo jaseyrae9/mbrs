@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <myplugin.generator.options.SerializableProjectOptions>
 	<typeMappings />
+	<staticResources>
+		<myplugin.generator.options.StaticResource>
+			<sourceFolder>static</sourceFolder>
+			<sourceFilename>mvnw</sourceFilename>
+			<destinationFolder>C:/temp/{0}</destinationFolder>
+			<destinationFilename>mvnw</destinationFilename>
+			<overwrite>false</overwrite>
+		</myplugin.generator.options.StaticResource>
+		<myplugin.generator.options.StaticResource>
+			<sourceFolder>static</sourceFolder>
+			<sourceFilename>mvnw.cmd</sourceFilename>
+			<destinationFolder>C:/temp/{0}</destinationFolder>
+			<destinationFilename>mvnw.cmd</destinationFilename>
+			<overwrite>false</overwrite>
+		</myplugin.generator.options.StaticResource>
+		<myplugin.generator.options.StaticResource>
+			<sourceFolder>static</sourceFolder>
+			<sourceFilename>Application.java</sourceFilename>
+			<destinationFolder>C:/temp/{0}/src/main/java/generated</destinationFolder>
+			<destinationFilename>Application.java</destinationFilename>
+			<overwrite>false</overwrite>
+		</myplugin.generator.options.StaticResource>
+		<myplugin.generator.options.StaticResource>
+			<sourceFolder>static</sourceFolder>
+			<sourceFilename>Mapper.java</sourceFilename>
+			<destinationFolder>C:/temp/{0}/src/main/java/generated/mapper</destinationFolder>
+			<destinationFilename>Mapper.java</destinationFilename>
+			<overwrite>true</overwrite>
+		</myplugin.generator.options.StaticResource>
+		<myplugin.generator.options.StaticResource>
+			<sourceFolder>static</sourceFolder>
+			<sourceFilename>AbstarctEntityNotFoundExceptionHandler.java</sourceFilename>
+			<destinationFolder>C:/temp/{0}/src/main/java/generated/exception</destinationFolder>
+			<destinationFilename>AbstarctEntityNotFoundExceptionHandler.java</destinationFilename>
+			<overwrite>true</overwrite>
+		</myplugin.generator.options.StaticResource>
+		<myplugin.generator.options.StaticResource>
+			<sourceFolder>static</sourceFolder>
+			<sourceFilename>EntityNotFoundExceptionHandler.java</sourceFilename>
+			<destinationFolder>C:/temp/{0}/src/main/java/handwritten/exception</destinationFolder>
+			<destinationFilename>NotFoundExceptionHandler.java</destinationFilename>
+			<overwrite>false</overwrite>
+		</myplugin.generator.options.StaticResource>
+		<myplugin.generator.options.StaticResource>
+			<sourceFolder>static</sourceFolder>
+			<sourceFilename>AbstractPersistenceExceptionHandler.java</sourceFilename>
+			<destinationFolder>C:/temp/{0}/src/main/java/generated/exception</destinationFolder>
+			<destinationFilename>AbstractPersistenceExceptionHandler.java</destinationFilename>
+			<overwrite>true</overwrite>
+		</myplugin.generator.options.StaticResource>
+		<myplugin.generator.options.StaticResource>
+			<sourceFolder>static</sourceFolder>
+			<sourceFilename>PersistenceExceptionHandler.java</sourceFilename>
+			<destinationFolder>C:/temp/{0}/src/main/java/handwritten/exception</destinationFolder>
+			<destinationFilename>PersistenceExceptionHandler.java</destinationFilename>
+			<overwrite>false</overwrite>
+		</myplugin.generator.options.StaticResource>
+	</staticResources>
 	<generatorOptions>
 		<entry>
 			<string>ApplicationYmlGenerator</string>

@@ -11,6 +11,10 @@ import myplugin.generator.service.AbstractServiceGenerator;
 import myplugin.generator.service.ConcreteServiceGenerator;
 
 public class GeneratorFactory {
+	
+	public static StaticFilesGenerator getStaticFilesGenerator() {
+		return new StaticFilesGenerator();
+	}
 
 	public static BasicGenerator getGenerator(String name, GeneratorOptions options) {
 		if(name.equals(ApplicationYmlGenerator.class.getSimpleName())) {

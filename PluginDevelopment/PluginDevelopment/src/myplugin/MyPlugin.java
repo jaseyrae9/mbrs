@@ -33,6 +33,7 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 			SerializableProjectOptions projectOptions = optionsLoader.loadProjectOptionsFromXML(pluginDir, "ProjectOptions.xml");			
 			ProjectOptions.getProjectOptions().setGeneratorOptions(projectOptions.getGeneratorOptions());
 			ProjectOptions.getProjectOptions().setTypeMappings(projectOptions.getTypeMappings());
+			ProjectOptions.getProjectOptions().setStaticResources(projectOptions.getStaticResources());
 		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog( null, "Loading Micronaut plugin options failed.");
 		} catch (Exception e) {

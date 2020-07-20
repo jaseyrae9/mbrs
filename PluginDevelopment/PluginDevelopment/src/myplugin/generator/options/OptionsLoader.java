@@ -24,7 +24,11 @@ public class OptionsLoader {
 		//podesavanje template datoteka na apsolutne putanje
 		for(GeneratorOptions generatorOptions:projectOptions.getGeneratorOptions().values()) {
 			generatorOptions.setTemplateDir(path + File.separator + generatorOptions.getTemplateDir());
-		}		
+		}	
+		//podesavanje static resource datoteka na apsolutne putanje
+		for(StaticResource staticResource:projectOptions.getStaticResources()) {
+			staticResource.setSourceFolder(path + File.separator + staticResource.getSourceFolder());
+		}
 		return projectOptions;
 	}
 }

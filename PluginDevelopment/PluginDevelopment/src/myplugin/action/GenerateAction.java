@@ -14,6 +14,7 @@ import myplugin.analyzer.AnalyzeException;
 import myplugin.analyzer.ModelAnalyzer;
 import myplugin.generator.BasicGenerator;
 import myplugin.generator.GeneratorFactory;
+import myplugin.generator.StaticFilesGenerator;
 import myplugin.generator.options.GeneratorOptions;
 import myplugin.generator.options.ProjectOptions;
 
@@ -38,7 +39,7 @@ public class GenerateAction extends MDAction{
 			analyzer.prepareModel();	
 					
 			/**  @ToDo: Call generators*/ 
-			//pokreni generatore
+			//pokreni generatore koji rade sa templejtima
 			Map<String, GeneratorOptions> map = ProjectOptions.getProjectOptions().getGeneratorOptions();
 			for(String name : map.keySet()) {
 				BasicGenerator generator = GeneratorFactory.getGenerator(name, map.get(name));
@@ -49,6 +50,9 @@ public class GenerateAction extends MDAction{
 					JOptionPane.showMessageDialog(null, "Generator " + name + " not found.");
 				}
 			}
+			//pokreni generator statickih fajlova, tj. kopirator
+			StaticFilesGenerator generator = GeneratorFactory.getStaticFilesGenerator();
+			generator.generate();
 			
 			//kraj generisanja
 			JOptionPane.showMessageDialog(null, "Micronaut generate finished.");

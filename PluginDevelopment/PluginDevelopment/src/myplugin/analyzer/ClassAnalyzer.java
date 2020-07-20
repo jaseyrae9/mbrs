@@ -1,13 +1,21 @@
 package myplugin.analyzer;
 
+import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
+import com.nomagic.uml2.ext.jmi.helpers.ModelHelper;
 import com.nomagic.uml2.ext.jmi.helpers.StereotypesHelper;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
 import com.nomagic.uml2.ext.magicdraw.mdprofiles.Stereotype;
 
 import myplugin.generator.fmmodel.FMClass;
+import myplugin.generator.fmmodel.FMProperty;
+import myplugin.generator.fmmodel.FMType;
+import myplugin.generator.options.ProjectOptions;
+import myplugin.generator.options.TypeMapping;
 import myplugin.utils.Constants;
 
 public class ClassAnalyzer {
@@ -31,7 +39,45 @@ public class ClassAnalyzer {
 				createProperty(tag, fmClass, magicClass, stereotype);
 			}
 		}
+		
+		// Pronalazenje svojstava klase
+		Iterator<Property> iterator = ModelHelper.attributes(magicClass);
+		while (iterator.hasNext()) {
+		Property p = iterator.next();
+			FMProperty property = createPropertyData(p);			
+			fmClass.getProperties().add(property);
+		}	
+		
 		return fmClass;
+	}
+
+	private static FMProperty createPropertyData(Property property) {
+		String propertyName = property.getName();
+		int lower = property.getLower();
+		int upper = property.getUpper();
+		
+		String typeName = property.getType().getName();
+		String typePackage = "";
+		
+		TypeMapping typeMapping = getDataType(typeName);
+		if(typeMapping != null) {
+			typeName = typeMapping.getDestType();
+			typePackage = typeMapping.getLibraryName(); 
+		}
+		FMType type = new FMType(typeName, typePackage);
+		
+		String visibility = property.getVisibility().toString();
+		return new FMProperty(propertyName, type, visibility, lower, upper);
+	}
+	
+	private static TypeMapping getDataType(String umlDataType) {
+		List<TypeMapping> typeMappings = ProjectOptions.getProjectOptions().getTypeMappings();
+		for(TypeMapping typeMapping : typeMappings) {
+			if(typeMapping.getuMLType().equals(umlDataType)) {
+				return typeMapping;
+			}
+		}
+		return null;
 	}
 
 	private static void createProperty(Property tag, FMClass fmClass, Class magicClass, Stereotype stereotype) {

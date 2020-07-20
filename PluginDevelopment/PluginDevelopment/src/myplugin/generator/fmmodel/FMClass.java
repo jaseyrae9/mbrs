@@ -1,5 +1,8 @@
 package myplugin.generator.fmmodel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FMClass extends FMType {
 	public static final String schemeField = "scheme";
 	public static final String tableNameField = "tableName";
@@ -18,6 +21,9 @@ public class FMClass extends FMType {
 	private boolean generateReadOne;
 	private boolean generateReadAll;
 
+	//Class properties
+	private List<FMProperty> fmProperties = new ArrayList<FMProperty>();
+	
 	public FMClass() {
 		isPersistant = false;
 		generateCreate = true;
@@ -89,5 +95,13 @@ public class FMClass extends FMType {
 
 	public void setGenerateReadAll(boolean generateReadAll) {
 		this.generateReadAll = generateReadAll;
+	}
+
+	public List<FMProperty> getProperties() {
+		return fmProperties;
+	}
+
+	public void setProperties(List<FMProperty> fmProperties) {
+		this.fmProperties = fmProperties;
 	}
 }

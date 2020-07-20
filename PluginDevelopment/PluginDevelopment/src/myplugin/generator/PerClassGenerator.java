@@ -37,7 +37,7 @@ public abstract class PerClassGenerator extends BasicGenerator {
 			try {
 				// postavi naziv mikroservisa za koji se trenutno radi generisanje
 				microserviceName = microservice.getName();
-				// proveri da li postoji template i generiši folder za čuvanje
+				// proveri da li postoji template i generisi folder za cuvanje
 				super.generate();
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage());

@@ -2,8 +2,6 @@ package myplugin.analyzer;
 
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import com.nomagic.uml2.ext.jmi.helpers.StereotypesHelper;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Class;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
@@ -13,15 +11,21 @@ import myplugin.generator.fmmodel.FMClass;
 import myplugin.utils.Constants;
 
 public class ClassAnalyzer {
-	public static FMClass analyzeClass(Class magicClass) {
+	
+	//TODO: Provera da li persistant klasa ima kljuc
+	public static FMClass analyzeClass(Class magicClass, String packageName) throws AnalyzeException {
+		if(magicClass.getName() == null) {
+			throw new AnalyzeException("Classes must have names!");
+		}
+		
 		FMClass fmClass = new FMClass();
 		fmClass.setName(magicClass.getName());
-
+		fmClass.setTypePackage(packageName);
+		
 		Stereotype stereotype = StereotypesHelper.getAppliedStereotypeByString(magicClass,
-				Constants.presistentEntityIdentifier);
-		JOptionPane.showMessageDialog(null, "Analiziranje klase ." + magicClass.getName());
+				Constants.presistentEntityIdentifier);		
 		if (stereotype != null) {
-			JOptionPane.showMessageDialog(null, "Pronasli stereotip  ." + magicClass.getName());
+			fmClass.setPersistant(true);
 			List<Property> tags = stereotype.getOwnedAttribute();
 			for (Property tag : tags) {
 				createProperty(tag, fmClass, magicClass, stereotype);

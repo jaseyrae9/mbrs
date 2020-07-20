@@ -64,7 +64,7 @@ public abstract class BasicGenerator {
 			DefaultObjectWrapperBuilder builder = new DefaultObjectWrapperBuilder(cfg.getIncompatibleImprovements());
 			cfg.setObjectWrapper(builder.build());			
 		} catch (IOException e) {
-			throw new IOException("Can't find template " + tName + ".", e);
+			throw new IOException("Can't find template " + tName + "." + templateDir, e);
 		}
 		
 		//napravi folder

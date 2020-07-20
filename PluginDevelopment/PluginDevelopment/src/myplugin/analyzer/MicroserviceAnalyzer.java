@@ -2,8 +2,6 @@ package myplugin.analyzer;
 
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import com.nomagic.uml2.ext.jmi.helpers.StereotypesHelper;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Package;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
@@ -17,10 +15,8 @@ public class MicroserviceAnalyzer {
 	public static FMMicroservice analyzeMicroservice(Package ownedPackage) {
 		FMMicroservice fmMicroservice = new FMMicroservice(ownedPackage.getName());
 		
-		Stereotype stereotype = StereotypesHelper.getAppliedStereotypeByString(ownedPackage, Constants.microserviceIdentifier);
-		JOptionPane.showMessageDialog(null, "Analiziranje mikrosservisa ." + ownedPackage.getName());
-		if (stereotype != null) {
-			JOptionPane.showMessageDialog(null, "Pronasli stereotip mikroservis  ." + ownedPackage.getName());
+		Stereotype stereotype = StereotypesHelper.getAppliedStereotypeByString(ownedPackage, Constants.microserviceIdentifier);		
+		if (stereotype != null) {			
 			List<Property> tags = stereotype.getOwnedAttribute();
 			for (Property tag : tags) {
 				createProperty(tag, fmMicroservice, ownedPackage, stereotype);

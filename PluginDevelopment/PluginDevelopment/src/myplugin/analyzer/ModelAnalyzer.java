@@ -86,7 +86,7 @@ public class ModelAnalyzer {
 						microservice.getEnumerations().add(EnumAnalyzer.analyzeEnumeration(enumeration, packageName));
 					} else if (ownedElement instanceof Class) {
 						Class magicClass = (Class) ownedElement;
-						microservice.getClasses().add(ClassAnalyzer.analyzeClass(magicClass));
+						microservice.getClasses().add(ClassAnalyzer.analyzeClass(magicClass, packageName));
 					}
 				}
 			}

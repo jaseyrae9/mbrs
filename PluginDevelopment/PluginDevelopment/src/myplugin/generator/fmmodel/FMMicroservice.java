@@ -2,6 +2,7 @@ package myplugin.generator.fmmodel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FMMicroservice extends FMElement {
 	public static final String dbUrlField = "dbUrl";
@@ -59,6 +60,10 @@ public class FMMicroservice extends FMElement {
 
 	public List<FMClass> getClasses() {
 		return classes;
+	}
+	
+	public List<FMClass> getPersistantClasses(){
+		return classes.stream().filter(c -> c.isPersistant()).collect(Collectors.toList());
 	}
 
 	public void setClasses(List<FMClass> classes) {

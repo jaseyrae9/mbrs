@@ -8,7 +8,8 @@ public class FMClass extends FMType {
 	public static final String generateDeleteField = "generateDelete";
 	public static final String generateReadOneField = "generateReadOne";
 	public static final String generateReadAllField = "generateReadAll";
-	
+
+	private boolean isPersistant;
 	private String scheme;
 	private String tableName;
 	private boolean generateCreate;
@@ -16,9 +17,17 @@ public class FMClass extends FMType {
 	private boolean generateDelete;
 	private boolean generateReadOne;
 	private boolean generateReadAll;
-	
+
 	public FMClass() {
-		
+		isPersistant = false;
+	}
+
+	public boolean isPersistant() {
+		return isPersistant;
+	}
+
+	public void setPersistant(boolean isPersistant) {
+		this.isPersistant = isPersistant;
 	}
 
 	public String getScheme() {

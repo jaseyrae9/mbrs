@@ -3,25 +3,47 @@
 	<typeMappings />
 	<generatorOptions>
 		<entry>
-			<string>myplugin.generator.ApplicationYmlGenerator</string>
+			<string>ApplicationYmlGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
 				<outputPath>C:/temp/{0}/src/main/resources</outputPath>
 				<templateName>ApplicationYmlTemplate</templateName>
-				<templateDir>templates</templateDir>
+				<templateDir>templates\additionalfiles</templateDir>
 				<outputFileName>application.yml</outputFileName>
 				<overwrite>true</overwrite>
 				<filePackage>generated</filePackage>
 			</myplugin.generator.options.GeneratorOptions>
 		</entry>
 		<entry>
-			<string>myplugin.generator.EnumerationGenerator</string>
+			<string>EnumerationGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
 				<outputPath>C:/temp/{0}/src/main/java/generated/model</outputPath>
 				<templateName>EnumerationTemplate</templateName>
-				<templateDir>templates</templateDir>
+				<templateDir>templates\model</templateDir>
 				<outputFileName>{0}.java</outputFileName>
 				<overwrite>true</overwrite>
 				<filePackage>generated</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>AbstractRepositoryGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/generated/repository</outputPath>
+				<templateName>AbstractRepository</templateName>
+				<templateDir>templates\repository</templateDir>
+				<outputFileName>Abstract{0}Repository.java</outputFileName>
+				<overwrite>true</overwrite>
+				<filePackage>generated</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>ConcreteRepositoryGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/handwritten/repository</outputPath>
+				<templateName>ConcreteRepository</templateName>
+				<templateDir>templates\repository</templateDir>
+				<outputFileName>{0}Repository.java</outputFileName>
+				<overwrite>false</overwrite>
+				<filePackage>handwritten</filePackage>
 			</myplugin.generator.options.GeneratorOptions>
 		</entry>
 	</generatorOptions>

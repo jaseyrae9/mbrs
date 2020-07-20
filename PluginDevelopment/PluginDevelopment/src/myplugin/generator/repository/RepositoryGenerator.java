@@ -1,4 +1,4 @@
-package myplugin.generator;
+package myplugin.generator.repository;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -8,16 +8,19 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 
 import freemarker.template.TemplateException;
-import myplugin.generator.fmmodel.FMEnumeration;
+import myplugin.generator.BasicGenerator;
+import myplugin.generator.fmmodel.FMClass;
 import myplugin.generator.fmmodel.FMMicroservice;
 import myplugin.generator.fmmodel.FMModel;
 import myplugin.generator.options.GeneratorOptions;
 
-public class EnumerationGenerator extends BasicGenerator {
-	public EnumerationGenerator(GeneratorOptions generatorOptions) {
-		super(generatorOptions);
-	}
+public abstract class RepositoryGenerator extends BasicGenerator {
 
+	public RepositoryGenerator(GeneratorOptions generatorOptions) {
+		super(generatorOptions);
+		// TODO Auto-generated constructor stub
+	}
+	
 	@Override
 	public void generate() throws IOException {
 
@@ -31,21 +34,18 @@ public class EnumerationGenerator extends BasicGenerator {
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage());
 			}
-
-			for (FMEnumeration enumeration : microservice.getEnumerations()) {
+			
+			for (FMClass fmClass : microservice.getPersistantClasses()) {
 				// generisi datoteku
-				Writer out;
-				Map<String, Object> context = new HashMap<String, Object>();
+				Writer out;				
 				try {
 					// parametar 1 je cime se menja {0} u imenu datoteke
 					// parametar 2 je naziv paketa, ovo je da bismo lakse mogli, npr u modelu imati
 					// podpakete
-					out = getWriter(enumeration.getName(), enumeration.getTypePackage());
+					out = getWriter(fmClass.getName(), fmClass.getTypePackage());
+					Map<String, Object> context = new HashMap<String, Object>();;
 					if (out != null) {
-						context.clear();
-						context.put("package", enumeration.getTypePackage());
-						context.put("name", enumeration.getName());
-						context.put("literals", enumeration.getValues());
+						prepareContext(fmClass, context);						
 						getTemplate().process(context, out);
 						out.flush();
 					}
@@ -57,4 +57,9 @@ public class EnumerationGenerator extends BasicGenerator {
 			}
 		}
 	}
+	
+	public void prepareContext(FMClass fmClass, Map<String, Object> context) {
+		context.clear();
+	}
+
 }

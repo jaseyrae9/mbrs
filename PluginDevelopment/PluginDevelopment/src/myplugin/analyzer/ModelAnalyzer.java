@@ -42,7 +42,11 @@ public class ModelAnalyzer {
 	public void prepareModel() throws AnalyzeException {
 		/** @ToDo: Spremiti model za novu upotrebu, dakle ocistiti sve liste itd... */
 		FMModel.getInstance().getMicroservices().clear();
+		//formiraj model
 		processPackage(root, filePackage, null);
+		//popravi veze
+		TypeAnalyzer typeAnalyzer = new TypeAnalyzer();
+		typeAnalyzer.analyze();
 	}
 
 	private void processPackage(Package pack, String packageOwner, FMMicroservice microservice)
@@ -83,10 +87,10 @@ public class ModelAnalyzer {
 					}
 					if (ownedElement instanceof Enumeration) {
 						Enumeration enumeration = (Enumeration) ownedElement;
-						microservice.getEnumerations().add(EnumAnalyzer.analyzeEnumeration(enumeration, packageName));
+						microservice.getEnumerations().add(EnumAnalyzer.analyzeEnumeration(microservice, enumeration, packageName));
 					} else if (ownedElement instanceof Class) {
 						Class magicClass = (Class) ownedElement;
-						microservice.getClasses().add(ClassAnalyzer.analyzeClass(magicClass, packageName));
+						microservice.getClasses().add(ClassAnalyzer.analyzeClass(microservice, magicClass, packageName));
 					}
 				}
 			}

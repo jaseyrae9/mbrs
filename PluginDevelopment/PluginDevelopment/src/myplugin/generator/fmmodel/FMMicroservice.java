@@ -15,15 +15,8 @@ public class FMMicroservice extends FMElement {
 	private List<FMEnumeration> enumerations = new ArrayList<FMEnumeration>();
 	private List<FMClass> classes = new ArrayList<FMClass>();
 	
-	public FMMicroservice(String name) {
-		super(name);
-	}
-
-	public FMMicroservice(String name, String dbUrl, String dbUsername, String dbPassword) {
-		super(name);
-		this.dbUrl = dbUrl;
-		this.dbUsername = dbUsername;
-		this.dbPassword = dbPassword;
+	public FMMicroservice(String magicDrawId, String name) {
+		super(name, magicDrawId);
 	}
 
 	public String getDbUrl() {

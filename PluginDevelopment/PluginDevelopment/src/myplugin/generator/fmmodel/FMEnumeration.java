@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class FMEnumeration extends FMType {
 	private ArrayList<String> values = new ArrayList<String>();
 
-	public FMEnumeration(String name, String typePackage) {
-		super(name, typePackage);
+	public FMEnumeration(String magicDrawId, String name, String typePackage, FMMicroservice microservice) {
+		super(magicDrawId, name, typePackage, false, false, true, microservice);
 	}
 
 	public ArrayList<String> getValues() {

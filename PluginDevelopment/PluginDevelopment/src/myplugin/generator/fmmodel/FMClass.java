@@ -11,7 +11,7 @@ public class FMClass extends FMType {
 	public static final String generateDeleteField = "generateDelete";
 	public static final String generateReadOneField = "generateReadOne";
 	public static final String generateReadAllField = "generateReadAll";
-
+	
 	private boolean isPersistant;
 	private String scheme;
 	private String tableName;
@@ -24,7 +24,8 @@ public class FMClass extends FMType {
 	//Class properties
 	private List<FMProperty> fmProperties = new ArrayList<FMProperty>();
 	
-	public FMClass() {
+	public FMClass(String magicDrawId, String name, String typePackage, FMMicroservice microservice) {
+		super(magicDrawId, name, typePackage, false, true, false, microservice);
 		isPersistant = false;
 		generateCreate = true;
 		generateUpdate = true;
@@ -32,7 +33,7 @@ public class FMClass extends FMType {
 		generateReadOne = true;
 		generateReadAll = true;
 	}
-
+	
 	public boolean isPersistant() {
 		return isPersistant;
 	}

@@ -38,7 +38,9 @@ public abstract class Abstract${name}Service{
 	<#if generateUpdate>
 	public ${name} update(${key} id, ${name} newEntity){
 		${name} entity = findOne(id);
-		//TODO: setovati polja
+		<#list properties as property>
+		entity.set${property.name?cap_first}(newEntity.get${property.name?cap_first}());
+		</#list>
 		return save(entity);
 	}
 	

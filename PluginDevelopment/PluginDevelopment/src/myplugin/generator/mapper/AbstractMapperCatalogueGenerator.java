@@ -17,5 +17,6 @@ public class AbstractMapperCatalogueGenerator extends PerMicroserviceGenerator{
 	public void prepareContext(FMMicroservice microservice, Map<String, Object> context) {
 		context.clear();
 		context.put("classes", microservice.getPersistantClasses());
+		context.put("feignClasses", microservice.getFeignClasses());
 	}
 }

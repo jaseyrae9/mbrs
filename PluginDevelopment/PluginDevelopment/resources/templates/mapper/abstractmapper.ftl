@@ -13,13 +13,33 @@ public abstract class Abstract${name}Mapper implements Mapper<${name}, Abstract$
 		
 	public Abstract${name}DTO fullConversion(${name} entity) {
 		Abstract${name}DTO ret = simpleConversion(entity);
-		//TODO: setovati reference pozivom njhovih simpleConversiona
+		<#list fullProperties as property>
+		<#if property.feign>
+		<#if property.upper = 1>
+		ret.set${property.name?cap_first}(mapperCatalogue.get${property.type.name?cap_first}FeignClient().getOne(entity.get${property.type.name?cap_first}One()));
+		<#else>
+		ret.set${property.name?cap_first}(entity.get${property.name?cap_first}().stream()
+			.map(el -> mapperCatalogue.get${property.type.name?cap_first}FeignClient().getOne(entity.get${property.type.name?cap_first}()))
+			.collect(Collectors.toSet()));
+		</#if>
+		<#else>
+		<#if property.upper = 1>
+		ret.set${property.name?cap_first}(mapperCatalogue.get${property.type.name?cap_first}Mapper().simpleConversion(entity.get${property.type.name?cap_first}()));
+		<#else>
+		ret.set${property.name?cap_first}(entity.get${property.name?cap_first}().stream()
+			.map(el -> mapperCatalogue.get${property.type.name?cap_first}Mapper().simpleConversion(el))
+			.collect(Collectors.toSet()));
+		</#if>		
+		</#if>
+		</#list>
 		return ret;
 	}
 	
 	public Abstract${name}DTO simpleConversion(${name} entity) {
 		Abstract${name}DTO ret = new ${name}DTO();
-		//TODO: setovati prosta polja
+		<#list simpleProperties as property>
+		ret.set${property.name?cap_first}(entity.get${property.name?cap_first}());
+		</#list>
 		return ret;
 	}
 }

@@ -48,6 +48,11 @@ public class TypeAnalyzer {
 			property.setType(type);
 			if(!fmClass.getMicroservice().equals(type.getMicroservice())) {
 				property.setFeign(true);
+				if(property.getType() instanceof FMClass) {
+					//ako je class pravicemo feign klijente
+					FMClass feignClass = (FMClass) property.getType();
+					fmClass.getMicroservice().getFeignClasses().add(feignClass);
+				}
 			}
 		}
 	}

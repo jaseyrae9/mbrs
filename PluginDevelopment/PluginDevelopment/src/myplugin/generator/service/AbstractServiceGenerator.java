@@ -1,9 +1,12 @@
 package myplugin.generator.service;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import myplugin.generator.PerClassGenerator;
 import myplugin.generator.fmmodel.FMClass;
+import myplugin.generator.fmmodel.FMProperty;
 import myplugin.generator.options.GeneratorOptions;
 
 public class AbstractServiceGenerator extends PerClassGenerator{
@@ -24,6 +27,15 @@ public class AbstractServiceGenerator extends PerClassGenerator{
 		context.put("generateDelete", fmClass.isGenerateDelete());
 		//TODO: zameniti tako da se postavi pravi kljuc klase
 		context.put("key", "Integer");
-		//TODO: setovati listu polja koje setter treba da setuje (i dodati u templejtu u setter to
+		//filtriraj polja koja treba setovati
+		List<FMProperty> properties = fmClass.getProperties().stream()
+				.filter(p -> setProperty(p))
+				.collect(Collectors.toList());
+		context.put("properties", properties);
+	}
+	
+	private boolean setProperty(FMProperty p) {
+		//setuju se polja koja se cuvaju u bazi, koja imaju seter i koja nisu liste
+		return p.isPersistant() && p.isCreateSetter() && p.getUpper() == 1;
 	}
 }

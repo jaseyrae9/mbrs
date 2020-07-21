@@ -14,9 +14,10 @@ public class FMMicroservice extends FMElement {
 	private String dbPassword;
 	private List<FMEnumeration> enumerations = new ArrayList<FMEnumeration>();
 	private List<FMClass> classes = new ArrayList<FMClass>();
+	private List<FMClass> feignClasses = new ArrayList<FMClass>();
 	
 	public FMMicroservice(String magicDrawId, String name) {
-		super(name, magicDrawId);
+		super(magicDrawId, name);
 	}
 
 	public String getDbUrl() {
@@ -61,5 +62,13 @@ public class FMMicroservice extends FMElement {
 
 	public void setClasses(List<FMClass> classes) {
 		this.classes = classes;
+	}
+
+	public List<FMClass> getFeignClasses() {
+		return feignClasses;
+	}
+
+	public void setFeignClasses(List<FMClass> feignClasses) {
+		this.feignClasses = feignClasses;
 	}
 }

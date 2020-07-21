@@ -13,9 +13,9 @@ public class FMProperty extends FMElement {
 	private boolean createSetter;
 	private boolean createGetter;
 	// Da li se obelezje cuva u bazi podataka
-	private boolean isPersistant;
+	private boolean persistant;
 	// Potrebno za generisanje importa i Feign klasa
-	private boolean isFeign;
+	private boolean feign;
 
 	public FMProperty(String magicDrawId, String name, FMType type, String visibility, int lower, int upper) {
 		super(magicDrawId, name);
@@ -29,9 +29,9 @@ public class FMProperty extends FMElement {
 		this.createSetter = true;
 		
 		//TODO: ovo postavljati na true preko setter kada obelezje ima odgovarajuci stereotip
-		this.isPersistant = false;
+		this.persistant = false;
 		
-		this.isFeign = false;
+		this.feign = false;
 	}
 
 	public FMType getType() {
@@ -83,18 +83,18 @@ public class FMProperty extends FMElement {
 	}
 
 	public boolean isPersistant() {
-		return isPersistant;
+		return persistant;
 	}
 
 	public void setPersistant(boolean isPersistant) {
-		this.isPersistant = isPersistant;
+		this.persistant = isPersistant;
 	}
 
 	public boolean isFeign() {
-		return isFeign;
+		return feign;
 	}
 
 	public void setFeign(boolean isFeign) {
-		this.isFeign = isFeign;
+		this.feign = isFeign;
 	}
 }

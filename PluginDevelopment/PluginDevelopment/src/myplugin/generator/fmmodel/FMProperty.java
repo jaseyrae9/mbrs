@@ -24,13 +24,9 @@ public class FMProperty extends FMElement {
 
 		this.lower = lower;
 		this.upper = upper;
-		
 		this.createGetter = true;
 		this.createSetter = true;
-		
-		//TODO: ovo postavljati na true preko setter kada obelezje ima odgovarajuci stereotip
 		this.persistant = false;
-		
 		this.feign = false;
 	}
 

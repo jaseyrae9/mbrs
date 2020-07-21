@@ -12,7 +12,7 @@ import myplugin.utils.Constants;
 
 public class MicroserviceAnalyzer {
 	
-	public static FMMicroservice analyzeMicroservice(Package ownedPackage) {
+	public static FMMicroservice analyzeMicroservice(Package ownedPackage) {		
 		FMMicroservice fmMicroservice = new FMMicroservice(ownedPackage.getID(), ownedPackage.getName());
 		
 		Stereotype stereotype = StereotypesHelper.getAppliedStereotypeByString(ownedPackage, Constants.microserviceIdentifier);		

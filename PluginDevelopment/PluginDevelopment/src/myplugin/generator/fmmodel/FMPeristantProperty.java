@@ -18,23 +18,23 @@ public class FMPeristantProperty extends FMProperty {
 	
 	public FMPeristantProperty(String magicDrawId, String name, FMType type, String visibility, int lower, int upper) {
 		super(magicDrawId, name, type, visibility, lower, upper);
-		// TODO Auto-generated constructor stub
+		key = false;
 	}
 	
 	public FMPeristantProperty(FMProperty property) {
 		super(property.getMagicDrawId(), property.getName(), property.getType(), property.getVisibility(), property.getLower(), property.getUpper());
 	}
 	
-	public Boolean getIsKey() {
+	public Boolean isKey() {
 		return key;
 	}
-	public void setIsKey(Boolean key) {
+	public void setKey(Boolean key) {
 		this.key = key;
 	}
-	public Boolean getIsUnique() {
+	public Boolean isUnique() {
 		return unique;
 	}
-	public void setIsUnique(Boolean unique) {
+	public void setUnique(Boolean unique) {
 		this.unique = unique;
 	}
 	public Integer getLength() {

@@ -54,7 +54,7 @@ public class ModelAnalyzer {
 		// Recursive procedure that extracts data from package elements and stores it in
 		// the intermediate data structure
 
-		if (pack.getName() == null)
+		if (pack.getName().trim() == null)
 			throw new AnalyzeException("Packages must have names!");
 
 		String packageName = packageOwner;

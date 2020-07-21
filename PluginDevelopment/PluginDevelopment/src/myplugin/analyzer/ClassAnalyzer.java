@@ -12,11 +12,11 @@ import com.nomagic.uml2.ext.magicdraw.mdprofiles.Stereotype;
 import myplugin.generator.fmmodel.FMClass;
 import myplugin.generator.fmmodel.FMMicroservice;
 import myplugin.generator.fmmodel.FMProperty;
+import myplugin.generator.fmmodel.FMType;
 import myplugin.utils.Constants;
 
 public class ClassAnalyzer {
-	
-	//TODO: Provera da li persistant klasa ima kljuc
+		
 	public static FMClass analyzeClass(FMMicroservice microservice, Class magicClass, String packageName) throws AnalyzeException {
 		if(magicClass.getName() == null) {
 			throw new AnalyzeException("Classes must have names!");
@@ -41,6 +41,12 @@ public class ClassAnalyzer {
 			FMProperty property = PropertyAnalyzer.createPropertyData(p);			
 			fmClass.getProperties().add(property);
 		}	
+		
+		//proveri da li klasa ima kljuc
+		FMType keyType = fmClass.getKeyType();
+		if(fmClass.isPersistant() && keyType == null) {
+			throw new AnalyzeException("Persistent classes must have key identifiers!");
+		}
 		
 		return fmClass;
 	}

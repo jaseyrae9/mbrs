@@ -2,6 +2,8 @@ package myplugin.generator.fmmodel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public class FMClass extends FMType {
 	public static final String schemeField = "scheme";
@@ -104,5 +106,16 @@ public class FMClass extends FMType {
 
 	public void setProperties(List<FMProperty> fmProperties) {
 		this.fmProperties = fmProperties;
+	}
+	
+	public FMType getKeyType() {
+		Stream<FMPeristantProperty> persistantProperties = this.fmProperties.stream()
+				.filter(p-> p instanceof FMPeristantProperty)
+				.map(p -> (FMPeristantProperty)p);
+		Optional<FMPeristantProperty> key = persistantProperties.filter(p -> p.isKey()).findFirst();
+		if(!key.isPresent()) {
+			return null;
+		}
+		return key.get().getType();
 	}
 }

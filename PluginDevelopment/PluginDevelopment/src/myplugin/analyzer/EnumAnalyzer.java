@@ -8,7 +8,7 @@ import myplugin.generator.fmmodel.FMMicroservice;
 
 public class EnumAnalyzer {
 	public static FMEnumeration analyzeEnumeration(FMMicroservice microservice, Enumeration enumeration, String packageName) throws AnalyzeException {
-		if(enumeration.getName() == null) {
+		if(enumeration.getName().trim() == null) {
 			throw new AnalyzeException("Enumerations must have names!");
 		}
 		FMEnumeration fmEnumeration = new FMEnumeration(enumeration.getID(), enumeration.getName(), packageName, microservice);

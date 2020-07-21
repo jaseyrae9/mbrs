@@ -25,8 +25,7 @@ public class AbstractServiceGenerator extends PerClassGenerator{
 		context.put("generateCreate", fmClass.isGenerateCreate());
 		context.put("generateUpdate", fmClass.isGenerateUpdate());
 		context.put("generateDelete", fmClass.isGenerateDelete());
-		//TODO: zameniti tako da se postavi pravi kljuc klase
-		context.put("key", "Integer");
+		context.put("key", fmClass.getKeyType().getName());
 		//filtriraj polja koja treba setovati
 		List<FMProperty> properties = fmClass.getProperties().stream()
 				.filter(p -> setProperty(p))

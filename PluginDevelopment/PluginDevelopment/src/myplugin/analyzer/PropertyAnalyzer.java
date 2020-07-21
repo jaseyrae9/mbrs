@@ -21,7 +21,7 @@ import myplugin.utils.Constants;
 public class PropertyAnalyzer {
 	public static FMProperty createPropertyData(Property property) throws AnalyzeException {
 		String propertyName = property.getName();
-		if (propertyName == null) {
+		if (propertyName.trim() == null) {
 			throw new AnalyzeException("Properties must have names!");
 		}
 
@@ -47,7 +47,7 @@ public class PropertyAnalyzer {
 		Stereotype persistentPropertyStereotype = StereotypesHelper.getAppliedStereotypeByString(property,
 				Constants.persistentPropertyIdentifier);
 		if (persistentPropertyStereotype != null) {
-			fmProperty.setPersistant(true); // TODO: da li je ovo sad potrebno?
+			fmProperty.setPersistant(true);
 			fmProperty = setPersistantPropertyData(property, fmProperty, persistentPropertyStereotype);
 		}
 
@@ -55,6 +55,7 @@ public class PropertyAnalyzer {
 		Stereotype linkedPropertyStereotype = StereotypesHelper.getAppliedStereotypeByString(property,
 				Constants.linkedPropertyIdentifier);
 		if (linkedPropertyStereotype != null) {
+			fmProperty.setPersistant(true);
 			fmProperty = setLinkedPropertyData(property, fmProperty, linkedPropertyStereotype);
 		}
 		return fmProperty;
@@ -146,13 +147,13 @@ public class PropertyAnalyzer {
 			case FMPeristantProperty.isKeyField:
 				if (values.get(0) instanceof Boolean) {
 					Boolean isKey = (Boolean) values.get(0);
-					persistantProperty.setIsKey(isKey);
+					persistantProperty.setKey(isKey);
 				}
 				break;
 			case FMPeristantProperty.isUniqueField:
 				if (values.get(0) instanceof Boolean) {
 					Boolean isUnique = (Boolean) values.get(0);
-					persistantProperty.setIsUnique(isUnique);
+					persistantProperty.setUnique(isUnique);
 				}
 				break;
 			case FMPeristantProperty.lengthField:

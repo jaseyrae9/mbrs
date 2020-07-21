@@ -17,7 +17,6 @@ public class AbstractRepositoryGenerator extends PerClassGenerator {
 		super.prepareContext(fmClass, context);
 		context.put("package", fmClass.getTypePackage());
 		context.put("name", fmClass.getName());
-		//TODO: zameniti tako da se postavi pravi kljuc klase
-		context.put("key", "Integer");
+		context.put("key", fmClass.getKeyType().getName());
 	}
 }

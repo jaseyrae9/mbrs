@@ -49,7 +49,7 @@ public class ClassAnalyzer {
 		String tagName = tag.getName();
 
 		// preuzimanje vrednosti tagova
-		List<?> values = StereotypesHelper.getStereotypePropertyValue(magicClass, stereotype, tag.getName());
+		List<?> values = StereotypesHelper.getStereotypePropertyValue(magicClass, stereotype, tagName);
 
 		// if tag has tag values
 		if (values.size() > 0) {

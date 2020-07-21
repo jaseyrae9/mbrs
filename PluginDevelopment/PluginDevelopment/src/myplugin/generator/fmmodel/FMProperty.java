@@ -15,8 +15,10 @@ public class FMProperty extends FMElement {
 	// Da li se obelezje cuva u bazi podataka
 	private boolean isPersistant;
 	// Potrebno za generisanje importa i Feign klasa
-	private boolean isFeign;
+	private boolean feign;
 
+	private String columnName;	
+	
 	public FMProperty(String magicDrawId, String name, FMType type, String visibility, int lower, int upper) {
 		super(magicDrawId, name);
 		this.type = type;
@@ -31,7 +33,7 @@ public class FMProperty extends FMElement {
 		//TODO: ovo postavljati na true preko setter kada obelezje ima odgovarajuci stereotip
 		this.isPersistant = false;
 		
-		this.isFeign = false;
+		this.feign = false;
 	}
 
 	public FMType getType() {
@@ -91,10 +93,18 @@ public class FMProperty extends FMElement {
 	}
 
 	public boolean isFeign() {
-		return isFeign;
+		return feign;
 	}
 
-	public void setFeign(boolean isFeign) {
-		this.isFeign = isFeign;
+	public void setFeign(boolean feign) {
+		this.feign = feign;
+	}
+
+	public String getColumnName() {
+		return columnName;
+	}
+
+	public void setColumnName(String columnName) {
+		this.columnName = columnName;
 	}
 }

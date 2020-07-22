@@ -3,6 +3,7 @@ package myplugin.generator.fmmodel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FMClass extends FMType {
@@ -27,7 +28,7 @@ public class FMClass extends FMType {
 	private List<FMProperty> fmProperties = new ArrayList<FMProperty>();
 	
 	public FMClass(String magicDrawId, String name, String typePackage, FMMicroservice microservice) {
-		super(magicDrawId, name, typePackage, false, true, false, microservice);
+		super(magicDrawId, name, typePackage, false, true, false, "{}", microservice);
 		isPersistant = false;
 		generateCreate = true;
 		generateUpdate = true;
@@ -108,7 +109,7 @@ public class FMClass extends FMType {
 		this.fmProperties = fmProperties;
 	}
 	
-	public FMType getKeyType() {
+	public FMProperty getKey() {
 		Stream<FMPeristantProperty> persistantProperties = this.fmProperties.stream()
 				.filter(p-> p instanceof FMPeristantProperty)
 				.map(p -> (FMPeristantProperty)p);
@@ -116,6 +117,36 @@ public class FMClass extends FMType {
 		if(!key.isPresent()) {
 			return null;
 		}
-		return key.get().getType();
+		return key.get();
+	}
+	
+	public FMType getKeyType() {
+		FMProperty key = getKey();
+		if(key == null) {
+			return null;
+		}
+		return key.getType();
 	}	
+	
+	public String getKeyDefaultValue() {
+		FMType keyType = getKeyType();
+		if(keyType == null) {
+			return "";
+		}
+		return keyType.getDefaultValue();
+	}
+	
+	public List<FMProperty> getPropertiesForPost(){
+		List<FMProperty> ret = this.fmProperties.stream()
+				.filter(p -> p.isCreateSetter() && p.isPersistant() && p.getUpper() == 1)
+				.collect(Collectors.toList());
+		return ret;
+	}
+	
+	@Override
+	public String getDefaultValue() {
+		FMProperty key = getKey();
+		String ret = "{\\\""+ key.getName() + "\\\": " + key.getType().getDefaultValue() + "}";
+		return ret;
+	}
 }

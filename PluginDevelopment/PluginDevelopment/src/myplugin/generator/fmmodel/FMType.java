@@ -8,17 +8,22 @@ public class FMType extends FMElement {
 	private boolean umlType;
 	private boolean classType;
 	private boolean enumType;
+	// ovo je za generisanje postman testova
+	private String defaultValue;
 
-	public FMType(String magicDrawId, String name, String typePackage, boolean umlType, boolean classType, boolean enumType) {
+	public FMType(String magicDrawId, String name, String typePackage, boolean umlType, boolean classType,
+			boolean enumType, String defaultValue) {
 		super(magicDrawId, name);
 		this.typePackage = typePackage;
 		this.umlType = umlType;
 		this.classType = classType;
 		this.enumType = enumType;
+		this.defaultValue = defaultValue;
 	}
 
-	public FMType(String magicDrawId, String name, String typePackage, boolean umlType, boolean classType, boolean enumType , FMMicroservice microservice) {
-		this(magicDrawId, name, typePackage, umlType, classType, enumType);
+	public FMType(String magicDrawId, String name, String typePackage, boolean umlType, boolean classType,
+			boolean enumType, String defaultValue, FMMicroservice microservice) {
+		this(magicDrawId, name, typePackage, umlType, classType, enumType, defaultValue);
 		this.microservice = microservice;
 	}
 
@@ -61,4 +66,13 @@ public class FMType extends FMElement {
 	public void setUmlType(boolean umlType) {
 		this.umlType = umlType;
 	}
+
+	public String getDefaultValue() {
+		return defaultValue;
+	}
+
+	public void setDefaultValue(String defaultValue) {
+		this.defaultValue = defaultValue;
+	}
+
 }

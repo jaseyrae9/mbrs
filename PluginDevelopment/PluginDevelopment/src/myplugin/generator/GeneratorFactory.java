@@ -2,6 +2,7 @@ package myplugin.generator;
 
 import myplugin.generator.additionalfiles.ApplicationYmlGenerator;
 import myplugin.generator.additionalfiles.PomXmlGenerator;
+import myplugin.generator.additionalfiles.PostmanGenerator;
 import myplugin.generator.controller.AbstractControllerGenerator;
 import myplugin.generator.controller.ConcreteControllerGenerator;
 import myplugin.generator.dto.AbstractDTOGenerator;
@@ -32,6 +33,9 @@ public class GeneratorFactory {
 		}
 		else if(name.equals(PomXmlGenerator.class.getSimpleName())) {
 			return new PomXmlGenerator(options);
+		}
+		else if(name.equals(PostmanGenerator.class.getSimpleName())) {
+			return new PostmanGenerator(options);
 		}
 		else if(name.equals(EnumerationGenerator.class.getSimpleName())) {
 			return new EnumerationGenerator(options);

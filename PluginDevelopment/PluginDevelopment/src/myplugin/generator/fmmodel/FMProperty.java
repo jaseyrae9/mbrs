@@ -86,7 +86,7 @@ public class FMProperty extends FMElement {
 		this.persistant = isPersistant;
 	}
 
-	public boolean isFeign() {
+	public boolean getFeign() {
 		return feign;
 	}
 

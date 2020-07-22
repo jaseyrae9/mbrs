@@ -23,6 +23,7 @@ public class FMPeristantProperty extends FMProperty {
 	
 	public FMPeristantProperty(FMProperty property) {
 		super(property.getMagicDrawId(), property.getName(), property.getType(), property.getVisibility(), property.getLower(), property.getUpper());
+		setPersistant(property.isPersistant());
 	}
 	
 	public Boolean isKey() {

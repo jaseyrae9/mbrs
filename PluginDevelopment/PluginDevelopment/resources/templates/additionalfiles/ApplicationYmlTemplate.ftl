@@ -2,7 +2,7 @@ micronaut:
   application:
     name: ${name}
   server:
-    port: ${port}
+    port: ${port?string["0"]}
 
 eureka:
   client:

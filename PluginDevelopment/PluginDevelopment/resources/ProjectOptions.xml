@@ -5,56 +5,67 @@
 			<uMLType>date</uMLType>
 			<destType>Date</destType>
 			<libraryName>java.util</libraryName>
+			<defaultValue>\"2011-08-12T20:17:46.384Z\"</defaultValue>
 		</myplugin.generator.options.TypeMapping>
 		<myplugin.generator.options.TypeMapping>
 			<uMLType>int</uMLType>
 			<destType>int</destType>
 			<libraryName>java.lang</libraryName>
+			<defaultValue>1</defaultValue>
 		</myplugin.generator.options.TypeMapping>
 		<myplugin.generator.options.TypeMapping>
 			<uMLType>Integer</uMLType>
 			<destType>Integer</destType>
 			<libraryName>java.lang</libraryName>
+			<defaultValue>1</defaultValue>
 		</myplugin.generator.options.TypeMapping>
 		<myplugin.generator.options.TypeMapping>
 			<uMLType>long</uMLType>
 			<destType>long</destType>
 			<libraryName>java.lang</libraryName>
+			<defaultValue>1</defaultValue>
 		</myplugin.generator.options.TypeMapping>
 		<myplugin.generator.options.TypeMapping>
 			<uMLType>String</uMLType>
 			<destType>String</destType>
 			<libraryName>java.lang</libraryName>
+			<defaultValue>\"value\"</defaultValue>
 		</myplugin.generator.options.TypeMapping>
 		<myplugin.generator.options.TypeMapping>
 			<uMLType>char</uMLType>
 			<destType>Char</destType>
 			<libraryName>java.lang</libraryName>
+			<defaultValue>\'c\'</defaultValue>
 		</myplugin.generator.options.TypeMapping>
 		<myplugin.generator.options.TypeMapping>
 			<uMLType>float</uMLType>
 			<destType>float</destType>
 			<libraryName>java.lang</libraryName>
+			<defaultValue>1.0</defaultValue>
 		</myplugin.generator.options.TypeMapping>
 		<myplugin.generator.options.TypeMapping>
 			<uMLType>double</uMLType>
 			<destType>double</destType>
 			<libraryName>java.lang</libraryName>
+			<defaultValue>1.0</defaultValue>
 		</myplugin.generator.options.TypeMapping>
 		<myplugin.generator.options.TypeMapping>
 			<uMLType>boolean</uMLType>
 			<destType>boolean</destType>
 			<libraryName>java.lang</libraryName>
+			<defaultValue>true</defaultValue>
 		</myplugin.generator.options.TypeMapping>
 		<myplugin.generator.options.TypeMapping>
 			<uMLType>Boolean</uMLType>
 			<destType>Boolean</destType>
 			<libraryName>java.lang</libraryName>
+			<defaultValue>true</defaultValue>
 		</myplugin.generator.options.TypeMapping>
 		<myplugin.generator.options.TypeMapping>
 			<uMLType>byte</uMLType>
 			<destType>byte</destType>
 			<libraryName>java.lang</libraryName>
+			<defaultValue>1</defaultValue>
 		</myplugin.generator.options.TypeMapping>
 	</typeMappings>
 	<staticResources>
@@ -130,6 +141,28 @@
 				<templateName>ApplicationYmlTemplate</templateName>
 				<templateDir>templates\additionalfiles</templateDir>
 				<outputFileName>application.yml</outputFileName>
+				<overwrite>false</overwrite>
+				<filePackage>generated</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>PomXmlGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}</outputPath>
+				<templateName>PomXml</templateName>
+				<templateDir>templates\additionalfiles</templateDir>
+				<outputFileName>pom.xml</outputFileName>
+				<overwrite>false</overwrite>
+				<filePackage>generated</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>PostmanGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}</outputPath>
+				<templateName>Postman</templateName>
+				<templateDir>templates\additionalfiles</templateDir>
+				<outputFileName>{0}.postman_collection.json</outputFileName>
 				<overwrite>true</overwrite>
 				<filePackage>generated</filePackage>
 			</myplugin.generator.options.GeneratorOptions>

@@ -37,6 +37,30 @@ public class MicroserviceAnalyzer {
 		// if tag has tag values
 		if (values.size() > 0) {
 			switch (tagName) {
+			case FMMicroservice.groupIdField:
+				if(values.get(0) instanceof String) {
+					String groupId = (String)values.get(0);
+					fmMicroservice.setGroupId(groupId);
+				}
+				break;
+			case FMMicroservice.artifactIdField:
+				if(values.get(0) instanceof String) {
+					String artifactId = (String)values.get(0);
+					fmMicroservice.setArtifactId(artifactId);
+				}
+				break;
+			case FMMicroservice.versionField:
+				if(values.get(0) instanceof String) {
+					String version = (String)values.get(0);
+					fmMicroservice.setVersion(version);
+				}
+				break;
+			case FMMicroservice.portField:
+				if(values.get(0) instanceof Integer) {
+					Integer port = (Integer)values.get(0);
+					fmMicroservice.setPort(port);
+				}
+				break;
 			case FMMicroservice.dbUrlField:
 				if(values.get(0) instanceof String) {
 					String dbUrl = (String)values.get(0);

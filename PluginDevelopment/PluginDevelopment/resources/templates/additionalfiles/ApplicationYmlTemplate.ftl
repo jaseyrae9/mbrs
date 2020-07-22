@@ -2,7 +2,13 @@ micronaut:
   application:
     name: ${name}
   server:
-    port: 8081
+    port: ${port?string["0"]}
+
+eureka:
+  client:
+    registration:
+      enabled: true
+    defaultZone: ${r"${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}"}
 
 <#if dbUrl??>
 datasources:

@@ -24,6 +24,7 @@ public class FMLinkedProperty extends FMProperty {
 	
 	public FMLinkedProperty(FMProperty property) {
 		super(property.getMagicDrawId(), property.getName(), property.getType(), property.getVisibility(), property.getLower(), property.getUpper());
+		setPersistant(property.isPersistant());
 	}
 
 	public String getReferencedColumnName() {

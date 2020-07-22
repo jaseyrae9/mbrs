@@ -36,11 +36,11 @@ public class AbstractDTOGenerator extends PerClassGenerator{
 	}
 	
 	private boolean isClass(FMProperty p) {
-		return p.isCreateGetter() && p.getType().isClassType() && !p.isFeign();
+		return p.isCreateGetter() && p.getType().isClassType() && !p.getFeign();
 	}
 	
 	private boolean isFeignClass(FMProperty p) {
-		return p.isCreateGetter() && p.getType().isClassType() && p.isFeign();
+		return p.isCreateGetter() && p.getType().isClassType() && p.getFeign();
 	}
 	
 	private boolean isSimple(FMProperty p) {

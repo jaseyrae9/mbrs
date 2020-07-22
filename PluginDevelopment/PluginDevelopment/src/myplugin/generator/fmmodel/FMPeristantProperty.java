@@ -28,6 +28,7 @@ public class FMPeristantProperty extends FMProperty {
 		key = false;
 		unique = false;
 		generator = FMGeneratorType.NONE;
+		setPersistant(property.isPersistant());
 	}
 	
 	public Boolean getKey() {

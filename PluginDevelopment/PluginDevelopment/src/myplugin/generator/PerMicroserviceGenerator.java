@@ -46,7 +46,7 @@ public abstract class PerMicroserviceGenerator extends BasicGenerator {
 				// parametar 1 je cime se menja {0} u imenu datoteke
 				// parametar 2 je naziv paketa, ovo je da bismo lakse mogli, npr u modelu imati
 				// podpakete
-				out = getWriter("", "");
+				out = getWriter(microserviceName, "");
 				Map<String, Object> context = new HashMap<String, Object>();;
 				if (out != null) {
 					prepareContext(microservice, context);						

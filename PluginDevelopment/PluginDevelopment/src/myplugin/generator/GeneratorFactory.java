@@ -13,6 +13,7 @@ import myplugin.generator.mapper.AbstractMapperCatalogueGenerator;
 import myplugin.generator.mapper.AbstractMapperGenerator;
 import myplugin.generator.mapper.ConcreteMapperGenerator;
 import myplugin.generator.model.EnumerationGenerator;
+import myplugin.generator.model.ModelGenerator;
 import myplugin.generator.options.GeneratorOptions;
 import myplugin.generator.repository.AbstractRepositoryGenerator;
 import myplugin.generator.repository.ConcreteRepositoryGenerator;
@@ -76,6 +77,9 @@ public class GeneratorFactory {
 		}
 		else if(name.equals(ConcreteDTOGenerator.class.getSimpleName())) {
 			return new ConcreteDTOGenerator(options);
+		}
+		else if(name.equals(ModelGenerator.class.getSimpleName())) {
+			return new ModelGenerator(options);
 		}
 		else {
 			return null;

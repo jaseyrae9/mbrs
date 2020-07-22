@@ -83,7 +83,26 @@ public class PropertyAnalyzer {
 
 	private static void createLinkedProperty(Property tag, Property property, FMProperty fmProperty,
 			Stereotype stereotype, FMLinkedProperty linkedProperty) {
+		
+		Property referencingProperty = property.getOpposite();
+		int upper = referencingProperty.getUpper();
+		int lower = referencingProperty.getLower();
+		String name = referencingProperty.getName();		
+		
+		String typeName = referencingProperty.getType().getName();
+		String typePackage = "";
 
+		TypeMapping typeMapping = getDataType(typeName);
+		boolean isUml = false;
+		if (typeMapping != null) {
+			typeName = typeMapping.getDestType();
+			typePackage = typeMapping.getLibraryName();
+			isUml = true;
+		}
+		FMType type = new FMType(property.getType().getID(), typeName, typePackage, isUml, false, false);
+		
+		FMProperty p = new FMProperty(referencingProperty.getID(), name, type, referencingProperty.getVisibility().toString(), lower, upper );
+		linkedProperty.setOppositeEnd(new FMLinkedProperty(p));
 		String tagName = tag.getName();
 
 		// preuzimanje vrednosti tagova

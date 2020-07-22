@@ -112,10 +112,11 @@ public class FMClass extends FMType {
 		Stream<FMPeristantProperty> persistantProperties = this.fmProperties.stream()
 				.filter(p-> p instanceof FMPeristantProperty)
 				.map(p -> (FMPeristantProperty)p);
-		Optional<FMPeristantProperty> key = persistantProperties.filter(p -> p.isKey()).findFirst();
+		Optional<FMPeristantProperty> key = persistantProperties.filter(p -> p.getKey()).findFirst();
 		if(!key.isPresent()) {
 			return null;
 		}
+	
 		return key.get().getType();
 	}	
 }

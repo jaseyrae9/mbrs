@@ -16,6 +16,8 @@ public class FMLinkedProperty extends FMProperty {
 	private Boolean optional;
 	private Boolean orphanRemoval;
 
+	private FMLinkedProperty oppositeEnd;
+
 	public FMLinkedProperty(String magicDrawId, String name, FMType type, String visibility, int lower, int upper) {
 		super(magicDrawId, name, type, visibility, lower, upper);
 	}
@@ -70,6 +72,14 @@ public class FMLinkedProperty extends FMProperty {
 
 	public void setOrphanRemoval(Boolean orphanRemoval) {
 		this.orphanRemoval = orphanRemoval;
+	}
+
+	public FMLinkedProperty getOppositeEnd() {
+		return oppositeEnd;
+	}
+
+	public void setOppositeEnd(FMLinkedProperty oppositeEnd) {
+		this.oppositeEnd = oppositeEnd;
 	}
 
 }

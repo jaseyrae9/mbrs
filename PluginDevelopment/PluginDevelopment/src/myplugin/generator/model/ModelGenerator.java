@@ -3,6 +3,7 @@ package myplugin.generator.model;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import myplugin.generator.ImportUtil;
 import myplugin.generator.PerClassGenerator;
 import myplugin.generator.fmmodel.FMClass;
 import myplugin.generator.fmmodel.FMLinkedProperty;
@@ -21,13 +22,15 @@ public class ModelGenerator extends PerClassGenerator {
 		super.prepareContext(fmClass, context);
 		context.put("package", fmClass.getTypePackage());
 		context.put("name", fmClass.getName());
+		context.put("tableName", fmClass.getTableName());
 		context.put("needsSet", fmClass.getProperties().stream().anyMatch(p -> p.isCreateGetter() && p.getUpper() == -1));
 		context.put("needsSetterImport", fmClass.getProperties().stream().anyMatch(p -> p.isCreateSetter()));
 		context.put("needsGetterImport", fmClass.getProperties().stream().anyMatch(p -> p.isCreateGetter()));
+		context.put("imports", ImportUtil.uniqueTypesUsed(fmClass.getProperties(), true));
 
 		context.put("peristantProperties", fmClass.getProperties().stream().filter(p -> p instanceof FMPeristantProperty).collect(Collectors.toList()));
 		context.put("linkedProperties", fmClass.getProperties().stream().filter(p -> p instanceof FMLinkedProperty).collect(Collectors.toList()));
-		context.put("properties", fmClass.getProperties().stream().filter(p -> p.isPersistant()).collect(Collectors.toList()));
+		context.put("properties", fmClass.getProperties().stream().filter(p -> !p.isPersistant()).collect(Collectors.toList()));
 	}
 
 }

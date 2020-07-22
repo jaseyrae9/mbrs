@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class SerializableProjectOptions implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+	private String path;
 	private List<TypeMapping> typeMappings = new ArrayList<TypeMapping>();
 	private Map<String, GeneratorOptions> generatorOptions = new HashMap<String, GeneratorOptions>();
 	private List<StaticResource> staticResources = new ArrayList<StaticResource>();
@@ -25,6 +25,14 @@ public class SerializableProjectOptions implements Serializable {
 	
 	public SerializableProjectOptions() {
 		super();
+	}
+	
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 	public List<TypeMapping> getTypeMappings() {

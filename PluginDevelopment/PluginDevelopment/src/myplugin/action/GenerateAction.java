@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import com.nomagic.magicdraw.actions.MDAction;
@@ -31,9 +32,13 @@ public class GenerateAction extends MDAction{
 		if (Application.getInstance().getProject() == null) return;
 		Package root = Application.getInstance().getProject().getModel();		
 		if (root == null) return;	
-				
-		ModelAnalyzer analyzer = new ModelAnalyzer(root, "");	
 		
+		//izbor lokacije
+		if(!chooseLocation()) {
+			return;
+		}
+				
+		ModelAnalyzer analyzer = new ModelAnalyzer(root, "");		
 		try {
 			//napravi model u radnoj memoriji
 			analyzer.prepareModel();	
@@ -62,6 +67,17 @@ public class GenerateAction extends MDAction{
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		} 	
-	}		  
+	}	
+	
+	private boolean chooseLocation() {		
+		JFileChooser jfc = new JFileChooser(ProjectOptions.getProjectOptions().getPath());
+		jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+			String fileName = jfc.getSelectedFile().getAbsolutePath();
+			ProjectOptions.getProjectOptions().setPath(fileName);
+			return true;
+		}
+		return false;
+	}
 
 }

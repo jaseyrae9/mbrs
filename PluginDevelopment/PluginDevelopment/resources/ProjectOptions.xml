@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <myplugin.generator.options.SerializableProjectOptions>
+	<path>C:/temp</path>
 	<typeMappings>
 		<myplugin.generator.options.TypeMapping>
 			<uMLType>date</uMLType>
@@ -72,63 +73,63 @@
 		<myplugin.generator.options.StaticResource>
 			<sourceFolder>static</sourceFolder>
 			<sourceFilename>mvnw</sourceFilename>
-			<destinationFolder>C:/temp/{0}</destinationFolder>
+			<destinationFolder>{path}/{0}</destinationFolder>
 			<destinationFilename>mvnw</destinationFilename>
 			<overwrite>false</overwrite>
 		</myplugin.generator.options.StaticResource>
 		<myplugin.generator.options.StaticResource>
 			<sourceFolder>static</sourceFolder>
 			<sourceFilename>mvnw.cmd</sourceFilename>
-			<destinationFolder>C:/temp/{0}</destinationFolder>
+			<destinationFolder>{path}/{0}</destinationFolder>
 			<destinationFilename>mvnw.cmd</destinationFilename>
 			<overwrite>false</overwrite>
 		</myplugin.generator.options.StaticResource>
 		<myplugin.generator.options.StaticResource>
 			<sourceFolder>static</sourceFolder>
 			<sourceFilename>Application.java</sourceFilename>
-			<destinationFolder>C:/temp/{0}/src/main/java/generated</destinationFolder>
+			<destinationFolder>{path}/{0}/src/main/java/generated</destinationFolder>
 			<destinationFilename>Application.java</destinationFilename>
 			<overwrite>false</overwrite>
 		</myplugin.generator.options.StaticResource>
 		<myplugin.generator.options.StaticResource>
 			<sourceFolder>static</sourceFolder>
 			<sourceFilename>Mapper.java</sourceFilename>
-			<destinationFolder>C:/temp/{0}/src/main/java/generated/mapper</destinationFolder>
+			<destinationFolder>{path}/{0}/src/main/java/generated/mapper</destinationFolder>
 			<destinationFilename>Mapper.java</destinationFilename>
 			<overwrite>true</overwrite>
 		</myplugin.generator.options.StaticResource>
 		<myplugin.generator.options.StaticResource>
 			<sourceFolder>static</sourceFolder>
 			<sourceFilename>AbstarctEntityNotFoundExceptionHandler.java</sourceFilename>
-			<destinationFolder>C:/temp/{0}/src/main/java/generated/exception</destinationFolder>
+			<destinationFolder>{path}/{0}/src/main/java/generated/exception</destinationFolder>
 			<destinationFilename>AbstarctEntityNotFoundExceptionHandler.java</destinationFilename>
 			<overwrite>true</overwrite>
 		</myplugin.generator.options.StaticResource>
 		<myplugin.generator.options.StaticResource>
 			<sourceFolder>static</sourceFolder>
 			<sourceFilename>EntityNotFoundExceptionHandler.java</sourceFilename>
-			<destinationFolder>C:/temp/{0}/src/main/java/handwritten/exception</destinationFolder>
+			<destinationFolder>{path}/{0}/src/main/java/handwritten/exception</destinationFolder>
 			<destinationFilename>EntityNotFoundExceptionHandler.java</destinationFilename>
 			<overwrite>false</overwrite>
 		</myplugin.generator.options.StaticResource>
 		<myplugin.generator.options.StaticResource>
 			<sourceFolder>static</sourceFolder>
 			<sourceFilename>AbstractPersistenceExceptionHandler.java</sourceFilename>
-			<destinationFolder>C:/temp/{0}/src/main/java/generated/exception</destinationFolder>
+			<destinationFolder>{path}/{0}/src/main/java/generated/exception</destinationFolder>
 			<destinationFilename>AbstractPersistenceExceptionHandler.java</destinationFilename>
 			<overwrite>true</overwrite>
 		</myplugin.generator.options.StaticResource>
 		<myplugin.generator.options.StaticResource>
 			<sourceFolder>static</sourceFolder>
 			<sourceFilename>PersistenceExceptionHandler.java</sourceFilename>
-			<destinationFolder>C:/temp/{0}/src/main/java/handwritten/exception</destinationFolder>
+			<destinationFolder>{path}/{0}/src/main/java/handwritten/exception</destinationFolder>
 			<destinationFilename>PersistenceExceptionHandler.java</destinationFilename>
 			<overwrite>false</overwrite>
 		</myplugin.generator.options.StaticResource>
 		<myplugin.generator.options.StaticResource>
 			<sourceFolder>static</sourceFolder>
 			<sourceFilename>MapperCatalogue.java</sourceFilename>
-			<destinationFolder>C:/temp/{0}/src/main/java/handwritten/mapper</destinationFolder>
+			<destinationFolder>{path}/{0}/src/main/java/handwritten/mapper</destinationFolder>
 			<destinationFilename>MapperCatalogue.java</destinationFilename>
 			<overwrite>false</overwrite>
 		</myplugin.generator.options.StaticResource>
@@ -137,8 +138,8 @@
 		<entry>
 			<string>ApplicationYmlGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/resources</outputPath>
-				<templateName>ApplicationYmlTemplate</templateName>
+				<outputPath>{path}/{0}/src/main/resources</outputPath>
+				<templateName>ApplicationYml</templateName>
 				<templateDir>templates\additionalfiles</templateDir>
 				<outputFileName>application.yml</outputFileName>
 				<overwrite>false</overwrite>
@@ -148,7 +149,7 @@
 		<entry>
 			<string>PomXmlGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}</outputPath>
+				<outputPath>{path}/{0}</outputPath>
 				<templateName>PomXml</templateName>
 				<templateDir>templates\additionalfiles</templateDir>
 				<outputFileName>pom.xml</outputFileName>
@@ -159,7 +160,7 @@
 		<entry>
 			<string>PostmanGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}</outputPath>
+				<outputPath>{path}/{0}</outputPath>
 				<templateName>Postman</templateName>
 				<templateDir>templates\additionalfiles</templateDir>
 				<outputFileName>{0}.postman_collection.json</outputFileName>
@@ -170,8 +171,8 @@
 		<entry>
 			<string>EnumerationGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/generated/model</outputPath>
-				<templateName>EnumerationTemplate</templateName>
+				<outputPath>{path}/{0}/src/main/java/generated/model</outputPath>
+				<templateName>Enumeration</templateName>
 				<templateDir>templates\model</templateDir>
 				<outputFileName>{0}.java</outputFileName>
 				<overwrite>true</overwrite>
@@ -181,7 +182,7 @@
 		<entry>
 			<string>AbstractRepositoryGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/generated/repository</outputPath>
+				<outputPath>{path}/{0}/src/main/java/generated/repository</outputPath>
 				<templateName>AbstractRepository</templateName>
 				<templateDir>templates\repository</templateDir>
 				<outputFileName>Abstract{0}Repository.java</outputFileName>
@@ -192,7 +193,7 @@
 		<entry>
 			<string>ConcreteRepositoryGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/handwritten/repository</outputPath>
+				<outputPath>{path}/{0}/src/main/java/handwritten/repository</outputPath>
 				<templateName>ConcreteRepository</templateName>
 				<templateDir>templates\repository</templateDir>
 				<outputFileName>{0}Repository.java</outputFileName>
@@ -203,7 +204,7 @@
 		<entry>
 			<string>AbstractServiceGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/generated/service</outputPath>
+				<outputPath>{path}/{0}/src/main/java/generated/service</outputPath>
 				<templateName>AbstractService</templateName>
 				<templateDir>templates\service</templateDir>
 				<outputFileName>Abstract{0}Service.java</outputFileName>
@@ -214,7 +215,7 @@
 		<entry>
 			<string>ConcreteServiceGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/handwritten/service</outputPath>
+				<outputPath>{path}/{0}/src/main/java/handwritten/service</outputPath>
 				<templateName>ConcreteService</templateName>
 				<templateDir>templates\service</templateDir>
 				<outputFileName>{0}Service.java</outputFileName>
@@ -225,7 +226,7 @@
 		<entry>
 			<string>AbstractControllerGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/generated/controller</outputPath>
+				<outputPath>{path}/{0}/src/main/java/generated/controller</outputPath>
 				<templateName>AbstractController</templateName>
 				<templateDir>templates\controller</templateDir>
 				<outputFileName>Abstract{0}Controller.java</outputFileName>
@@ -236,7 +237,7 @@
 		<entry>
 			<string>ConcreteControllerGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/handwritten/controller</outputPath>
+				<outputPath>{path}/{0}/src/main/java/handwritten/controller</outputPath>
 				<templateName>ConcreteController</templateName>
 				<templateDir>templates\controller</templateDir>
 				<outputFileName>{0}Controller.java</outputFileName>
@@ -247,7 +248,7 @@
 		<entry>
 			<string>AbstractMapperGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/generated/mapper</outputPath>
+				<outputPath>{path}/{0}/src/main/java/generated/mapper</outputPath>
 				<templateName>AbstractMapper</templateName>
 				<templateDir>templates\mapper</templateDir>
 				<outputFileName>Abstract{0}Mapper.java</outputFileName>
@@ -258,7 +259,7 @@
 		<entry>
 			<string>ConcreteMapperGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/handwritten/mapper</outputPath>
+				<outputPath>{path}/{0}/src/main/java/handwritten/mapper</outputPath>
 				<templateName>ConcreteMapper</templateName>
 				<templateDir>templates\mapper</templateDir>
 				<outputFileName>{0}Mapper.java</outputFileName>
@@ -269,7 +270,7 @@
 		<entry>
 			<string>AbstractMapperCatalogueGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/generated/mapper</outputPath>
+				<outputPath>{path}/{0}/src/main/java/generated/mapper</outputPath>
 				<templateName>AbstractMapperCatalogue</templateName>
 				<templateDir>templates\mapper</templateDir>
 				<outputFileName>AbstractMapperCatalogue.java</outputFileName>
@@ -280,7 +281,7 @@
 		<entry>
 			<string>AbstractFeignClientGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/generated/feignclient</outputPath>
+				<outputPath>{path}/{0}/src/main/java/generated/feignclient</outputPath>
 				<templateName>AbstractFeignClient</templateName>
 				<templateDir>templates\feign</templateDir>
 				<outputFileName>Abstract{0}FeignClient.java</outputFileName>
@@ -291,7 +292,7 @@
 		<entry>
 			<string>ConcreteFeignClientGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/handwritten/feignclient</outputPath>
+				<outputPath>{path}/{0}/src/main/java/handwritten/feignclient</outputPath>
 				<templateName>ConcreteFeignClient</templateName>
 				<templateDir>templates\feign</templateDir>
 				<outputFileName>{0}FeignClient.java</outputFileName>
@@ -302,7 +303,7 @@
 		<entry>
 			<string>AbstractFeignDTOGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/generated/dto/feign</outputPath>
+				<outputPath>{path}/{0}/src/main/java/generated/dto/feign</outputPath>
 				<templateName>AbstractFeignDTO</templateName>
 				<templateDir>templates\feign</templateDir>
 				<outputFileName>AbstractFeign{0}DTO.java</outputFileName>
@@ -313,7 +314,7 @@
 		<entry>
 			<string>ConcreteFeignDTOGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/handwritten/dto/feign</outputPath>
+				<outputPath>{path}/{0}/src/main/java/handwritten/dto/feign</outputPath>
 				<templateName>ConcreteFeignDTO</templateName>
 				<templateDir>templates\feign</templateDir>
 				<outputFileName>Feign{0}DTO.java</outputFileName>
@@ -324,7 +325,7 @@
 		<entry>
 			<string>AbstractDTOGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/generated/dto</outputPath>
+				<outputPath>{path}/{0}/src/main/java/generated/dto</outputPath>
 				<templateName>AbstractDTO</templateName>
 				<templateDir>templates\dto</templateDir>
 				<outputFileName>Abstract{0}DTO.java</outputFileName>
@@ -335,7 +336,7 @@
 		<entry>
 			<string>ConcreteDTOGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/handwritten/dto</outputPath>
+				<outputPath>{path}/{0}/src/main/java/handwritten/dto</outputPath>
 				<templateName>ConcreteDTO</templateName>
 				<templateDir>templates\dto</templateDir>
 				<outputFileName>{0}DTO.java</outputFileName>
@@ -346,7 +347,7 @@
 		<entry>
 			<string>ModelGenerator</string>
 			<myplugin.generator.options.GeneratorOptions>
-				<outputPath>C:/temp/{0}/src/main/java/generated/model</outputPath>
+				<outputPath>{path}/{0}/src/main/java/generated/model</outputPath>
 				<templateName>Model</templateName>
 				<templateDir>templates\model</templateDir>
 				<outputFileName>{0}.java</outputFileName>

@@ -30,7 +30,8 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 		/** @Todo: Ucitavanje opcija za generator*/		
 		OptionsLoader optionsLoader = new OptionsLoader();
 		try {			
-			SerializableProjectOptions projectOptions = optionsLoader.loadProjectOptionsFromXML(pluginDir, "ProjectOptions.xml");			
+			SerializableProjectOptions projectOptions = optionsLoader.loadProjectOptionsFromXML(pluginDir, "ProjectOptions.xml");
+			ProjectOptions.getProjectOptions().setPath(projectOptions.getPath());
 			ProjectOptions.getProjectOptions().setGeneratorOptions(projectOptions.getGeneratorOptions());
 			ProjectOptions.getProjectOptions().setTypeMappings(projectOptions.getTypeMappings());
 			ProjectOptions.getProjectOptions().setStaticResources(projectOptions.getStaticResources());

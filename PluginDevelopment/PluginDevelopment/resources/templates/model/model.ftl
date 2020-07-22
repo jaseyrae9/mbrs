@@ -15,14 +15,22 @@ import java.util.HashSet;
 import java.util.Set;
 </#if>
 
+<#list imports as import>
+<#if import.umlType && import.typePackage != "java.lang"> <#-- Import za uml tipove poput datuma. Java.lang se ne importuje. -->
+import ${import.typePackage}.${import.name};
+<#elseif !import.umlType && import.typePackage != package>
+import generated.model${import.typePackage}.${import.name}; <#-- Import za tipove koji nisu u istom paketu. -->
+</#if>
+</#list>
+
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity
-@Table(name = "${name?lower_case}")
+@Entity<#if tableName??>
+@Table(name = "${tableName?lower_case}")</#if>
 public class ${name} {
 
-	<#list properties as property>
+	<#list properties as property> <#-- Oni koji ne idu u bazu -->
 	<#if property.createGetter>
 	@Getter
 	</#if> 
@@ -31,16 +39,12 @@ public class ${name} {
 	</#if>
 	<#if property.upper == 1 >   
 	${property.visibility} ${property.type.name} ${property.name};
-	<#elseif property.upper == -1 > 
-	${property.visibility} Set<${property.type.name}> ${property.name} = new HashSet<${property.type.name}>();
-	<#else>   
-	<#list 1..property.upper as i>
-	${property.visibility} ${property.type.name} ${property.name}${i};
-	</#list>  
+	<#else> 
+	${property.visibility} Set<${property.type.name}> ${property.name} = new HashSet<${property.type.name}>();	
 	</#if>
-	</#list>	
-	
-	<#list peristantProperties as peristantProperty>
+	</#list>
+		
+	<#list peristantProperties as peristantProperty> <#-- Obicni koji idu u bazu -->
 	<#if peristantProperty.createGetter>
 	@Getter
 	</#if> 
@@ -61,11 +65,11 @@ public class ${name} {
 	<#if !peristantProperty.key>
 	@Column(name = "${peristantProperty.name?lower_case}", <#if (peristantProperty.length)??>length = ${peristantProperty.length}, </#if><#if (peristantProperty.scale)??> scale = ${peristantProperty.scale}, </#if><#if (peristantProperty.precision)??> precision = ${peristantProperty.precision}, </#if>nullable = <#if peristantProperty.lower == 0>false<#else>true</#if>, unique = <#if peristantProperty.unique>true<#else>false</#if>)   
 	</#if>
-	${peristantProperty.visibility} ${peristantProperty.type.name} ${peristantProperty.name};
-	</#if>
+	${peristantProperty.visibility} ${peristantProperty.type.name} ${peristantProperty.name};	
+	</#if>	
 	</#list>	
 	
-	<#list linkedProperties as linkedProperty>
+	<#list linkedProperties as linkedProperty> <#-- Reference -->
 	<#if linkedProperty.createGetter>
 	@Getter
 	</#if> 

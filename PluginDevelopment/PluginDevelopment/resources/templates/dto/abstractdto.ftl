@@ -7,21 +7,16 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 </#if>
-<#list simpleProperties as property> 
-<#if property.type?? && property.type.umlType && property.type.typePackage != "java.lang">
-import ${property.type.typePackage}.${property.type.name};
+<#list imports as import>
+<#if import.umlType && import.typePackage != "java.lang"> <#-- Import za uml tipove poput datuma. Java.lang se ne importuje. -->
+import ${import.typePackage}.${import.name};
+<#elseif import.enumType> <#-- Import za enume iz modela (jer njih ne menjamo sa dto) -->
+import generated.model${import.typePackage}.${import.name};
+<#elseif import.classType && import.microservice.name == microservice && import.typePackage != package>  <#-- Import za dto -->
+import generated.dto${import.typePackage}.${import.name};
+<#elseif import.classType && import.microservice.name != microservice> <#-- Import za feign dto -->
+import generated.dto.feign${import.typePackage}.${import.name};
 </#if>
-<#if property.type?? && property.type.enumType>
-import generated.model${property.type.typePackage}.${property.type.name};
-</#if>
-</#list>
-<#list classProperties as property> 
-<#if property.type.typePackage != package>
-import generated.dto${property.type.typePackage}.Abstract${property.type.name}DTO;
-</#if>
-</#list>
-<#list feignClassProperties as property> 
-import generated.dto.feign.AbstractFeign${property.type.name}DTO;
 </#list>
 
 @Getter
@@ -30,34 +25,22 @@ public abstract class Abstract${name}DTO {
 	<#list simpleProperties as property> 
 	<#if property.upper == 1 >   
 	protected ${property.type.name} ${property.name};
-	<#elseif property.upper == -1 > 
-	protected Set<${property.type.name}> ${property.name} = new HashSet<${property.type.name}>();
-	<#else>   
-	<#list 1..property.upper as i>
-	protected ${property.type.name} ${property.name}${i};
-	</#list>  
+	<#else> 
+	protected Set<${property.type.name}> ${property.name} = new HashSet<${property.type.name}>();	  
 	</#if>
 	</#list>	
 	<#list classProperties as property> 
 	<#if property.upper == 1 >   
 	protected Abstract${property.type.name}DTO ${property.name};
-	<#elseif property.upper == -1 > 
-	protected Set<Abstract${property.type.name}DTO> ${property.name} = new HashSet<Abstract${property.type.name}DTO>();
-	<#else>   
-	<#list 1..property.upper as i>
-	protected Abstract${property.type.name}DTO ${property.name}${i};
-	</#list>  
+	<#else> 
+	protected Set<Abstract${property.type.name}DTO> ${property.name} = new HashSet<Abstract${property.type.name}DTO>();	  
 	</#if>
 	</#list>	
 	<#list feignClassProperties as property> 
 	<#if property.upper == 1 >   
 	protected AbstractFeign${property.type.name}DTO ${property.name};
-	<#elseif property.upper == -1 > 
+	<#else> 
 	protected Set<AbstractFeign${property.type.name}DTO> ${property.name} = new HashSet<${property.type.name}>();
-	<#else>   
-	<#list 1..property.upper as i>
-	protected AbstractFeign${property.type.name}DTO ${property.name}${i};
-	</#list>  
 	</#if>
 	</#list>	
 }

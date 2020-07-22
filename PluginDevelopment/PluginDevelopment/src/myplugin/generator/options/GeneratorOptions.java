@@ -29,7 +29,7 @@ public class GeneratorOptions  {
 	}
 
 	public String getOutputPath() {
-		return outputPath;
+		return outputPath.replace("{path}", ProjectOptions.getProjectOptions().getPath());
 	}
 
 	public void setOutputPath(String outputPath) {

@@ -12,6 +12,8 @@ import java.util.Map;
  */
 
 public class ProjectOptions {
+	private String path;
+	
 	// List of UML 2.0 to java (or any other destination language) mappings
 	private List<TypeMapping> typeMappings = new ArrayList<TypeMapping>();
 
@@ -56,6 +58,14 @@ public class ProjectOptions {
 			projectOptions = new ProjectOptions();
 		}
 		return projectOptions;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 }

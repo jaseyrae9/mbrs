@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import myplugin.generator.ImportUtil;
 import myplugin.generator.PerFeignClassGenerator;
 import myplugin.generator.fmmodel.FMClass;
 import myplugin.generator.fmmodel.FMProperty;
@@ -19,11 +20,15 @@ public class AbstractFeignDTOGenerator extends PerFeignClassGenerator{
 	public void prepareContext(FMClass fmClass, Map<String, Object> context) {
 		super.prepareContext(fmClass, context);
 		context.put("name", fmClass.getName());
+		//obelezja koja treba dodati
 		List<FMProperty> properties = fmClass.getProperties().stream()
 				.filter(p -> isUmlProperty(p))
 				.collect(Collectors.toList());
 		context.put("properties", properties);
-		context.put("needsSet", properties.stream().anyMatch(p -> p.getUpper() == -1));
+		//da li importovati setove
+		context.put("needsSet", properties.stream().anyMatch(p -> p.getUpper() != 1));
+		//koje tipove treba importovati
+		context.put("imports", ImportUtil.uniqueTypesUsed(properties, false));
 	}
 	
 	private boolean isUmlProperty(FMProperty property) {

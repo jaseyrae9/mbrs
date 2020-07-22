@@ -28,7 +28,7 @@ public class StaticResource {
 	}
 
 	public String getDestinationFolder() {
-		return destinationFolder;
+		return destinationFolder.replace("{path}", ProjectOptions.getProjectOptions().getPath());
 	}
 
 	public void setDestinationFolder(String destinationFolder) {

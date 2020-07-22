@@ -140,6 +140,13 @@ public class FMClass extends FMType {
 		List<FMProperty> ret = this.fmProperties.stream()
 				.filter(p -> p.isCreateSetter() && p.isPersistant() && p.getUpper() == 1)
 				.collect(Collectors.toList());
+		//izbaciti one koji imaju generisanje
+		List<FMProperty> generated = ret.stream()
+				.filter(p -> p instanceof FMPeristantProperty)
+				.map(p -> (FMPeristantProperty) p)
+				.filter(p -> p.getGenerator() != FMGeneratorType.NONE)
+				.collect(Collectors.toList());
+		ret.removeAll(generated);
 		return ret;
 	}
 	

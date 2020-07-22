@@ -7,9 +7,11 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 </#if>
-<#list properties as property> 
-<#if property.type?? && property.type.typePackage != "java.lang">
-import ${property.type.typePackage}.${property.type.name};
+
+<#-- Ove se koriste samo polja koja su java tipovi, pa zato nema obrade za ostale tipove -->
+<#list imports as import> 
+<#if import.umlType && import.typePackage != "java.lang">
+import ${import.typePackage}.${import.name};;
 </#if>
 </#list>
 
@@ -19,12 +21,8 @@ public abstract class AbstractFeign${name}DTO {
 	<#list properties as property> 
 	<#if property.upper == 1 >   
 	protected ${property.type.name} ${property.name};
-	<#elseif property.upper == -1 > 
+	<#else> 
 	protected Set<${property.type.name}> ${property.name} = new HashSet<${property.type.name}>();
-	<#else>   
-	<#list 1..property.upper as i>
-	protected ${property.type.name} ${property.name}${i};
-	</#list>  
 	</#if>
 	</#list>
 }

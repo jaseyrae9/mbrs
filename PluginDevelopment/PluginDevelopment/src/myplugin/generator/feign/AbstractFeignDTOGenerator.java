@@ -23,6 +23,7 @@ public class AbstractFeignDTOGenerator extends PerFeignClassGenerator{
 				.filter(p -> isUmlProperty(p))
 				.collect(Collectors.toList());
 		context.put("properties", properties);
+		context.put("needsSet", properties.stream().anyMatch(p -> p.getUpper() == -1));
 	}
 	
 	private boolean isUmlProperty(FMProperty property) {

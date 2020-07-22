@@ -117,5 +117,5 @@ public class FMClass extends FMType {
 			return null;
 		}
 		return key.get().getType();
-	}
+	}	
 }

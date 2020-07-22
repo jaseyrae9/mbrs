@@ -3,6 +3,8 @@ package myplugin.generator;
 import myplugin.generator.additionalfiles.ApplicationYmlGenerator;
 import myplugin.generator.controller.AbstractControllerGenerator;
 import myplugin.generator.controller.ConcreteControllerGenerator;
+import myplugin.generator.dto.AbstractDTOGenerator;
+import myplugin.generator.dto.ConcreteDTOGenerator;
 import myplugin.generator.feign.AbstractFeignClientGenerator;
 import myplugin.generator.feign.AbstractFeignDTOGenerator;
 import myplugin.generator.feign.ConcreteFeignClientGenerator;
@@ -68,6 +70,12 @@ public class GeneratorFactory {
 		}
 		else if(name.equals(ConcreteFeignDTOGenerator.class.getSimpleName())) {
 			return new ConcreteFeignDTOGenerator(options);
+		}
+		else if(name.equals(AbstractDTOGenerator.class.getSimpleName())) {
+			return new AbstractDTOGenerator(options);
+		}
+		else if(name.equals(ConcreteDTOGenerator.class.getSimpleName())) {
+			return new ConcreteDTOGenerator(options);
 		}
 		else {
 			return null;

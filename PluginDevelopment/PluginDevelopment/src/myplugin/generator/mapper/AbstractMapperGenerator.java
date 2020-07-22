@@ -30,6 +30,7 @@ public class AbstractMapperGenerator extends PerClassGenerator{
 				.filter(p -> isFullProperty(p))
 				.collect(Collectors.toList());
 		context.put("fullProperties", fullProperties);
+		context.put("needsCollector", fullProperties.stream().anyMatch(p -> p.getUpper() == -1));
 	}
 	
 	private boolean isSimpleProperty(FMProperty p) {

@@ -1,6 +1,6 @@
 package handwritten.controller${package};
 
-import generated.controller${package}.Abstract${name}CategoryController;
+import generated.controller${package}.Abstract${name}Controller;
 import io.micronaut.http.annotation.Controller;
 
 

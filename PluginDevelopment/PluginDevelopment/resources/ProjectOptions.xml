@@ -97,7 +97,7 @@
 			<sourceFolder>static</sourceFolder>
 			<sourceFilename>EntityNotFoundExceptionHandler.java</sourceFilename>
 			<destinationFolder>C:/temp/{0}/src/main/java/handwritten/exception</destinationFolder>
-			<destinationFilename>NotFoundExceptionHandler.java</destinationFilename>
+			<destinationFilename>EntityNotFoundExceptionHandler.java</destinationFilename>
 			<overwrite>false</overwrite>
 		</myplugin.generator.options.StaticResource>
 		<myplugin.generator.options.StaticResource>
@@ -284,6 +284,28 @@
 				<templateName>ConcreteFeignDTO</templateName>
 				<templateDir>templates\feign</templateDir>
 				<outputFileName>Feign{0}DTO.java</outputFileName>
+				<overwrite>false</overwrite>
+				<filePackage>handwritten</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>AbstractDTOGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/generated/dto</outputPath>
+				<templateName>AbstractDTO</templateName>
+				<templateDir>templates\dto</templateDir>
+				<outputFileName>Abstract{0}DTO.java</outputFileName>
+				<overwrite>true</overwrite>
+				<filePackage>generated</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>ConcreteDTOGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/handwritten/dto</outputPath>
+				<templateName>ConcreteDTO</templateName>
+				<templateDir>templates\dto</templateDir>
+				<outputFileName>{0}DTO.java</outputFileName>
 				<overwrite>false</overwrite>
 				<filePackage>handwritten</filePackage>
 			</myplugin.generator.options.GeneratorOptions>

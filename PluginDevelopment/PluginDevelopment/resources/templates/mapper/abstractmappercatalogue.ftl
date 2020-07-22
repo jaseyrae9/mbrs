@@ -1,7 +1,14 @@
 package generated.mapper;
 
 <#list classes as el>
-import hand.mapper${el.typePackage}.${el.name}Mapper;
+import handwritten.mapper${el.typePackage}.${el.name}Mapper;
+</#list>
+
+<#if feignClasses?size != 0>
+import javax.inject.Inject;
+</#if>
+<#list feignClasses as el>
+import handwritten.feignclient.${el.name}FeignClient;
 </#list>
 
 import lombok.Getter;

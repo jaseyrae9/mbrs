@@ -50,24 +50,31 @@ public class FMPeristantProperty extends FMProperty {
 	public Integer getLength() {
 		return length;
 	}
+	
 	public void setLength(Integer length) {
 		this.length = length;
 	}
+	
 	public Integer getPrecision() {
 		return precision;
 	}
+	
 	public void setPrecision(Integer precision) {
 		this.precision = precision;
 	}
+	
 	public Integer getScale() {
 		return scale;
 	}
+	
 	public void setScale(Integer scale) {
 		this.scale = scale;
 	}
+	
 	public FMGeneratorType getGenerator() {
 		return generator;
 	}
+	
 	public void setGenerator(FMGeneratorType generator) {
 		this.generator = generator;
 	}

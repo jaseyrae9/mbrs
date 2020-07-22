@@ -96,12 +96,16 @@ public class PropertyAnalyzer {
 
 		TypeMapping typeMapping = getDataType(typeName);
 		boolean isUml = false;
+		String defaultValue = "";
+
 		if (typeMapping != null) {
 			typeName = typeMapping.getDestType();
 			typePackage = typeMapping.getLibraryName();
 			isUml = true;
+			defaultValue = typeMapping.getDefaultValue();
+
 		}
-		FMType type = new FMType(property.getType().getID(), typeName, typePackage, isUml, false, false);
+		FMType type = new FMType(property.getType().getID(), typeName, typePackage, isUml, false, false, defaultValue);
 		
 		FMProperty p = new FMProperty(referencingProperty.getID(), name, type, referencingProperty.getVisibility().toString(), lower, upper );
 		linkedProperty.setOppositeEnd(new FMLinkedProperty(p));

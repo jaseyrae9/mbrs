@@ -21,8 +21,7 @@ public class ModelGenerator extends PerClassGenerator {
 		super.prepareContext(fmClass, context);
 		context.put("package", fmClass.getTypePackage());
 		context.put("name", fmClass.getName());
-		context.put("needsSet",
-				fmClass.getProperties().stream().anyMatch(p -> p.isCreateGetter() && p.getUpper() == -1));
+		context.put("needsSet", fmClass.getProperties().stream().anyMatch(p -> p.isCreateGetter() && p.getUpper() == -1));
 		context.put("needsSetterImport", fmClass.getProperties().stream().anyMatch(p -> p.isCreateSetter()));
 		context.put("needsGetterImport", fmClass.getProperties().stream().anyMatch(p -> p.isCreateGetter()));
 

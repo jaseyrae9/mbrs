@@ -130,7 +130,18 @@
 				<templateName>ApplicationYmlTemplate</templateName>
 				<templateDir>templates\additionalfiles</templateDir>
 				<outputFileName>application.yml</outputFileName>
-				<overwrite>true</overwrite>
+				<overwrite>false</overwrite>
+				<filePackage>generated</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>PomXmlGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}</outputPath>
+				<templateName>PomXml</templateName>
+				<templateDir>templates\additionalfiles</templateDir>
+				<outputFileName>pom.xml</outputFileName>
+				<overwrite>false</overwrite>
 				<filePackage>generated</filePackage>
 			</myplugin.generator.options.GeneratorOptions>
 		</entry>

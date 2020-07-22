@@ -5,19 +5,30 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FMMicroservice extends FMElement {
+	public static final String portField = "port";
 	public static final String dbUrlField = "dbUrl";
 	public static final String dbUsernameField = "dbUsername";
 	public static final String dbPasswordField = "dbPassword";
-	
+
+	private Integer port;
 	private String dbUrl;
 	private String dbUsername;
 	private String dbPassword;
 	private List<FMEnumeration> enumerations = new ArrayList<FMEnumeration>();
 	private List<FMClass> classes = new ArrayList<FMClass>();
 	private List<FMClass> feignClasses = new ArrayList<FMClass>();
-	
+
 	public FMMicroservice(String magicDrawId, String name) {
 		super(magicDrawId, name);
+		port = 8080;
+	}
+
+	public Integer getPort() {
+		return port;
+	}
+
+	public void setPort(Integer port) {
+		this.port = port;
 	}
 
 	public String getDbUrl() {
@@ -55,8 +66,8 @@ public class FMMicroservice extends FMElement {
 	public List<FMClass> getClasses() {
 		return classes;
 	}
-	
-	public List<FMClass> getPersistantClasses(){
+
+	public List<FMClass> getPersistantClasses() {
 		return classes.stream().filter(c -> c.isPersistant()).collect(Collectors.toList());
 	}
 

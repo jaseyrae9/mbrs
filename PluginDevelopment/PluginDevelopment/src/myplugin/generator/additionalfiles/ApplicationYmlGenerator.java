@@ -16,6 +16,7 @@ public class ApplicationYmlGenerator extends PerMicroserviceGenerator{
 	public void prepareContext(FMMicroservice microservice, Map<String, Object> context) {
 		context.clear();
 		context.put("name", microservice.getName());
+		context.put("port", microservice.getPort());
 		context.put("dbUrl", microservice.getDbUrl());
 		context.put("dbUsername", microservice.getDbUsername());
 		context.put("dbPassword", microservice.getDbPassword());

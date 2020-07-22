@@ -37,6 +37,12 @@ public class MicroserviceAnalyzer {
 		// if tag has tag values
 		if (values.size() > 0) {
 			switch (tagName) {
+			case FMMicroservice.portField:
+				if(values.get(0) instanceof Integer) {
+					Integer port = (Integer)values.get(0);
+					fmMicroservice.setPort(port);
+				}
+				break;
 			case FMMicroservice.dbUrlField:
 				if(values.get(0) instanceof String) {
 					String dbUrl = (String)values.get(0);

@@ -3,9 +3,13 @@ package myplugin.generator;
 import myplugin.generator.additionalfiles.ApplicationYmlGenerator;
 import myplugin.generator.controller.AbstractControllerGenerator;
 import myplugin.generator.controller.ConcreteControllerGenerator;
+import myplugin.generator.feign.AbstractFeignClientGenerator;
+import myplugin.generator.feign.AbstractFeignDTOGenerator;
+import myplugin.generator.feign.ConcreteFeignClientGenerator;
+import myplugin.generator.feign.ConcreteFeignDTOGenerator;
+import myplugin.generator.mapper.AbstractMapperCatalogueGenerator;
 import myplugin.generator.mapper.AbstractMapperGenerator;
 import myplugin.generator.mapper.ConcreteMapperGenerator;
-import myplugin.generator.mapper.AbstractMapperCatalogueGenerator;
 import myplugin.generator.model.EnumerationGenerator;
 import myplugin.generator.options.GeneratorOptions;
 import myplugin.generator.repository.AbstractRepositoryGenerator;
@@ -52,6 +56,18 @@ public class GeneratorFactory {
 		}
 		else if(name.equals(AbstractMapperCatalogueGenerator.class.getSimpleName())) {
 			return new AbstractMapperCatalogueGenerator(options);
+		}
+		else if(name.equals(AbstractFeignClientGenerator.class.getSimpleName())) {
+			return new AbstractFeignClientGenerator(options);
+		}
+		else if(name.equals(ConcreteFeignClientGenerator.class.getSimpleName())) {
+			return new ConcreteFeignClientGenerator(options);
+		}
+		else if(name.equals(AbstractFeignDTOGenerator.class.getSimpleName())) {
+			return new AbstractFeignDTOGenerator(options);
+		}
+		else if(name.equals(ConcreteFeignDTOGenerator.class.getSimpleName())) {
+			return new ConcreteFeignDTOGenerator(options);
 		}
 		else {
 			return null;

@@ -244,5 +244,49 @@
 				<filePackage>generated</filePackage>
 			</myplugin.generator.options.GeneratorOptions>
 		</entry>
+		<entry>
+			<string>AbstractFeignClientGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/generated/feignclient</outputPath>
+				<templateName>AbstractFeignClient</templateName>
+				<templateDir>templates\feign</templateDir>
+				<outputFileName>Abstract{0}FeignClient.java</outputFileName>
+				<overwrite>true</overwrite>
+				<filePackage>generated</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>ConcreteFeignClientGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/handwritten/feignclient</outputPath>
+				<templateName>ConcreteFeignClient</templateName>
+				<templateDir>templates\feign</templateDir>
+				<outputFileName>{0}FeignClient.java</outputFileName>
+				<overwrite>false</overwrite>
+				<filePackage>handwritten</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>AbstractFeignDTOGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/generated/dto/feign</outputPath>
+				<templateName>AbstractFeignDTO</templateName>
+				<templateDir>templates\feign</templateDir>
+				<outputFileName>AbstractFeign{0}DTO.java</outputFileName>
+				<overwrite>true</overwrite>
+				<filePackage>generated</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
+		<entry>
+			<string>ConcreteFeignDTOGenerator</string>
+			<myplugin.generator.options.GeneratorOptions>
+				<outputPath>C:/temp/{0}/src/main/java/handwritten/dto/feign</outputPath>
+				<templateName>ConcreteFeignDTO</templateName>
+				<templateDir>templates\feign</templateDir>
+				<outputFileName>Feign{0}DTO.java</outputFileName>
+				<overwrite>false</overwrite>
+				<filePackage>handwritten</filePackage>
+			</myplugin.generator.options.GeneratorOptions>
+		</entry>
 	</generatorOptions>
 </myplugin.generator.options.SerializableProjectOptions>

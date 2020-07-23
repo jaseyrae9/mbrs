@@ -6,7 +6,7 @@
 PluginDevelopment is a Java application for generating Micronaut applications created for the purpose of the Agile Software Development Methodology course at the Faculty of Technical Sciences, University of Novi Sad.
 
 ## UML Profile
-![profile](profile/images/Microservice Profile.PNG)
+![profile](profile/images/profile.JPG)
 
 
 ## Instructions

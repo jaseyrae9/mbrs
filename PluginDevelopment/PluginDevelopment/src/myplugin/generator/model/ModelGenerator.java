@@ -36,10 +36,18 @@ public class ModelGenerator extends PerClassGenerator {
 		List<FMProperty> peristantProperties = fmClass.getProperties().stream()
 				.filter(p -> p instanceof FMPeristantProperty).collect(Collectors.toList());
 		
-		context.put("peristantProperties", peristantProperties);
-		context.put("linkedProperties", fmClass.getProperties().stream().filter(p -> p instanceof FMLinkedProperty)
-				.collect(Collectors.toList()));
+		//ne cuvaju se u bazi
 		context.put("properties", fmClass.getProperties().stream().filter(p -> !p.isPersistant()).collect(Collectors.toList()));
+		//cuvaju se u bazi
+		context.put("peristantProperties", peristantProperties);
+		//rerefence ka drugim (isti mikroservis)
+		List<FMProperty> linked = fmClass.getProperties().stream().filter(p -> p instanceof FMLinkedProperty && !p.getFeign())
+				.collect(Collectors.toList());
+		context.put("linkedProperties", linked);
+		//reference ka drugim mikroservisima
+		List<FMProperty> feign = fmClass.getProperties().stream().filter(p -> p instanceof FMLinkedProperty && p.getFeign())
+				.collect(Collectors.toList());
+		context.put("feignProperties", feign);
 	
 		context.put("persistenceImports", persistenceImports(fmClass.getTableName(), peristantProperties));
 	}

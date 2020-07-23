@@ -2,6 +2,12 @@ package generated.model${package};
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
+
+<#list persistenceImports as import>
+${import}
+</#list>
+
 
 <#if needsGetterImport>
 import lombok.Getter;

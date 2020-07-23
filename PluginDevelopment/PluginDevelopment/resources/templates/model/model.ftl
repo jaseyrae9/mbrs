@@ -1,23 +1,18 @@
 package generated.model${package};
 
+import javax.persistence.*; 
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.EqualsAndHashCode;
+<#if needsGetterImport>import lombok.Getter;</#if>
+<#if needsSetterImport>import lombok.Setter;</#if>
 
-<#list persistenceImports as import>
-${import}
-</#list>
-
-<#if needsGetterImport>
-import lombok.Getter;
-</#if>
-<#if needsSetterImport>
-import lombok.Setter;
-</#if>
 <#if needsSet>
 import java.util.HashSet;
 import java.util.Set;
 </#if>
+
 <#list imports as import>
 <#if import.umlType && import.typePackage != "java.lang"> <#-- Import za uml tipove poput datuma. Java.lang se ne importuje. -->
 import ${import.typePackage}.${import.name};

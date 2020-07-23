@@ -13,9 +13,9 @@ import ${import.typePackage}.${import.name};
 <#elseif import.enumType> <#-- Import za enume iz modela (jer njih ne menjamo sa dto) -->
 import generated.model${import.typePackage}.${import.name};
 <#elseif import.classType && import.microservice.name == microservice && import.typePackage != package>  <#-- Import za dto -->
-import generated.dto${import.typePackage}.${import.name};
+import generated.dto${import.typePackage}.Abstract${import.name}DTO;
 <#elseif import.classType && import.microservice.name != microservice> <#-- Import za feign dto -->
-import generated.dto.feign${import.typePackage}.${import.name};
+import generated.dto.feign${import.typePackage}.AbstractFeign${import.name}DTO;
 </#if>
 </#list>
 

@@ -1,15 +1,13 @@
 package myplugin.generator.fmmodel;
 
 public class FMLinkedProperty extends FMProperty {
-	
-	public static final String referencedColumnNameField = "referencedColumnName";
+
 	public static final String mappedByField = "mappedBy";
 	public static final String fetchField = "fetch";
 	public static final String cascadeField = "cascade";
 	public static final String optionalField = "optional";
 	public static final String orphanRemovalField = "orphanRemoval";
 	
-	private String referencedColumnName;
 	private String mappedBy;
 	private FMFetchType fetch;
 	private FMCascadeType cascade;
@@ -29,15 +27,7 @@ public class FMLinkedProperty extends FMProperty {
 		super.setCreateGetter(property.isCreateGetter());
 		setPersistant(property.isPersistant());
 	}
-
-	public String getReferencedColumnName() {
-		return referencedColumnName;
-	}
-
-	public void setReferencedColumnName(String referencedColumnName) {
-		this.referencedColumnName = referencedColumnName;
-	}
-
+	
 	public String getMappedBy() {
 		return mappedBy;
 	}

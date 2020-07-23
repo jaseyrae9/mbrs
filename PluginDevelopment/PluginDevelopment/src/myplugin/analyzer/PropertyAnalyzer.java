@@ -149,13 +149,7 @@ public class PropertyAnalyzer {
 
 		// ako tag ima vrednosti
 		if (values.size() > 0) {
-			switch (tagName) {
-			case FMLinkedProperty.referencedColumnNameField:
-				if (values.get(0) instanceof String) {
-					String referencedColumnName = (String) values.get(0);
-					linkedProperty.setReferencedColumnName(referencedColumnName);
-				}
-				break;
+			switch (tagName) {			
 			case FMLinkedProperty.mappedByField:
 				if (values.get(0) instanceof String) {
 					String mappedBy = (String) values.get(0);

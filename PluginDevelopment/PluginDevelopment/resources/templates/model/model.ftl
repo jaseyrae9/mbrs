@@ -75,14 +75,36 @@ public class ${name} {
 	</#if>	
 	</#list>	
 	
-	<#list linkedProperties as linkedProperty> <#-- Reference -->
-	<#if linkedProperty.createGetter>
+	<#list linkedProperties as property> <#-- Reference -->
+	<#if property.createGetter>
 	@Getter
 	</#if> 
-	<#if linkedProperty.createSetter>
+	<#if property.createSetter>
 	@Setter
 	</#if>
-	${linkedProperty.visibility} ${linkedProperty.type.name} ${linkedProperty.name};
+	<#if property.upper == -1 && property.oppositeEnd.upper == -1>@ManyToMany<#elseif property.upper == -1 && property.oppositeEnd.upper == 1>@OneToMany<#elseif property.upper == 1 && property.oppositeEnd.upper == -1>@ManyToOne<#else>@OneToOne</#if><#rt>
+	<#lt><#if (property.fetch)?? || (property.cascade)?? || (property.mappedBy)?? || (property.optional)?? || (property.orphanRemoval)??>(<#rt>
+		<#if (property.cascade)??>
+			<#lt>cascade = CascadeType.${property.cascade}<#rt>
+		</#if>
+		<#if (property.fetch)??>
+			<#lt><#if (property.cascade)??>, </#if>fetch = FetchType.${property.fetch}<#rt>
+		</#if>
+		<#if (property.mappedBy)??>
+			<#lt><#if (property.cascade)?? || (property.fetch)??>, </#if>mappedBy = "${property.mappedBy}"<#rt>
+		</#if>
+		<#if (property.optional)??>
+			<#lt><#if (property.cascade)?? || (property.fetch)?? || (property.mappedBy)??>, </#if>optional = ${property.optional?c}<#rt>
+		</#if>
+		<#if (property.orphanRemoval)??>
+			<#lt><#if (property.cascade)?? || (property.fetch)?? || (property.mappedBy)?? || (property.optional)??>, </#if>orphanRemoval = ${property.orphanRemoval?c}<#rt>
+		</#if>
+		<#lt>)</#if>	
+	<#if property.upper == 1>
+	${property.visibility} ${property.type.name} ${property.name};
+	<#else>
+	${property.visibility} Set<${property.type.name}> ${property.name} = new HashSet<${property.type.name}>();	
+	</#if>
 	</#list>
 
 }

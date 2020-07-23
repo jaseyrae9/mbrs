@@ -2,8 +2,6 @@ package myplugin.analyzer;
 
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import com.nomagic.uml2.ext.jmi.helpers.StereotypesHelper;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.EnumerationLiteral;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
@@ -113,7 +111,6 @@ public class PropertyAnalyzer {
 			if (values.get(0) instanceof String) {
 				String columnName = (String) values.get(0);
 				fmProperty.setColumnName(columnName);
-				JOptionPane.showMessageDialog(null, "Postavili column name.");
 			}
 		}
 	}

@@ -2,6 +2,8 @@ package myplugin.analyzer;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import com.nomagic.uml2.ext.jmi.helpers.StereotypesHelper;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.EnumerationLiteral;
 import com.nomagic.uml2.ext.magicdraw.classes.mdkernel.Property;
@@ -45,10 +47,21 @@ public class PropertyAnalyzer {
 		String visibility = property.getVisibility().toString();
 		FMProperty fmProperty = new FMProperty(property.getID(), propertyName, type, visibility, lower, upper);
 
+		// postavljanje atributa apstraktnog svojstva
+//		StereotypesHelper.getDerivedStereotypes(arg0, arg1, arg2)
+//		Stereotype abstractPropertyStereotype = StereotypesHelper.getAppliedStereotypeByString(property,
+//				Constants.abstractPropertyIdentifier);
+//		if (abstractPropertyStereotype != null) {
+//
+//			JOptionPane.showMessageDialog(null, "Pronasli stereotip.");
+//			setAbstractPropertyData(property, fmProperty, abstractPropertyStereotype);
+//		}
+
 		// ucitati tagove za perzistente atribute
 		Stereotype persistentPropertyStereotype = StereotypesHelper.getAppliedStereotypeByString(property,
 				Constants.persistentPropertyIdentifier);
 		if (persistentPropertyStereotype != null) {
+			setAbstractPropertyData(property, fmProperty, persistentPropertyStereotype);
 			fmProperty.setPersistant(true);
 			fmProperty = setPersistantPropertyData(property, fmProperty, persistentPropertyStereotype);
 		}
@@ -57,10 +70,18 @@ public class PropertyAnalyzer {
 		Stereotype linkedPropertyStereotype = StereotypesHelper.getAppliedStereotypeByString(property,
 				Constants.linkedPropertyIdentifier);
 		if (linkedPropertyStereotype != null) {
+			setAbstractPropertyData(property, fmProperty, linkedPropertyStereotype);
 			fmProperty.setPersistant(true);
 			fmProperty = setLinkedPropertyData(property, fmProperty, linkedPropertyStereotype);
 		}
 		return fmProperty;
+	}
+
+	private static void setAbstractPropertyData(Property property, FMProperty fmProperty, Stereotype stereotype) {
+		//List<Property> tags = ...
+//		for (Property tag : tags) {
+//			createAbstractProperty(tag, property, fmProperty, stereotype);
+//		}
 	}
 
 	private static FMProperty setPersistantPropertyData(Property property, FMProperty fmProperty,
@@ -83,14 +104,45 @@ public class PropertyAnalyzer {
 		return linkedProperty;
 	}
 
+	private static void createAbstractProperty(Property tag, Property property, FMProperty fmProperty,
+			Stereotype stereotype) {
+		String tagName = tag.getName();
+		// preuzimanje vrednosti taga
+		List<?> values = StereotypesHelper.getStereotypePropertyValue(property, stereotype, tagName);
+		// ako tag ima vrednosti
+		if (values.size() > 0) {
+			switch (tagName) {
+			case FMProperty.columnNameField:
+				if (values.get(0) instanceof String) {
+					String columnName = (String) values.get(0);
+					fmProperty.setColumnName(columnName);
+					JOptionPane.showMessageDialog(null, "Postavili column name.");
+				}
+				break;
+			case FMProperty.createSetterField:
+				if (values.get(0) instanceof Boolean) {
+					Boolean createSetter = (Boolean) values.get(0);
+					fmProperty.setCreateSetter(createSetter);
+				}
+				break;
+			case FMProperty.createGetterField:
+				if (values.get(0) instanceof Boolean) {
+					Boolean createGetter = (Boolean) values.get(0);
+					fmProperty.setCreateGetter(createGetter);
+				}
+				break;
+			}
+		}
+	}
+
 	private static void createLinkedProperty(Property tag, Property property, FMProperty fmProperty,
 			Stereotype stereotype, FMLinkedProperty linkedProperty) {
-		
+
 		Property referencingProperty = property.getOpposite();
 		int upper = referencingProperty.getUpper();
 		int lower = referencingProperty.getLower();
-		String name = referencingProperty.getName();		
-		
+		String name = referencingProperty.getName();
+
 		String typeName = referencingProperty.getType().getName();
 		String typePackage = "";
 
@@ -106,12 +158,13 @@ public class PropertyAnalyzer {
 
 		}
 		FMType type = new FMType(property.getType().getID(), typeName, typePackage, isUml, false, false, defaultValue);
-		
-		FMProperty p = new FMProperty(referencingProperty.getID(), name, type, referencingProperty.getVisibility().toString(), lower, upper );
+
+		FMProperty p = new FMProperty(referencingProperty.getID(), name, type,
+				referencingProperty.getVisibility().toString(), lower, upper);
 		linkedProperty.setOppositeEnd(new FMLinkedProperty(p));
 		String tagName = tag.getName();
 
-		// preuzimanje vrednosti tagova
+		// preuzimanje vrednosti taga
 		List<?> values = StereotypesHelper.getStereotypePropertyValue(property, stereotype, tagName);
 
 		// ako tag ima vrednosti
@@ -126,7 +179,8 @@ public class PropertyAnalyzer {
 			case FMLinkedProperty.mappedByField:
 				if (values.get(0) instanceof String) {
 					String mappedBy = (String) values.get(0);
-					linkedProperty.setMappedBy(mappedBy);				}
+					linkedProperty.setMappedBy(mappedBy);
+				}
 				break;
 			case FMLinkedProperty.optionalField:
 				if (values.get(0) instanceof Boolean) {
@@ -137,7 +191,8 @@ public class PropertyAnalyzer {
 			case FMLinkedProperty.orphanRemovalField:
 				if (values.get(0) instanceof Boolean) {
 					Boolean orphanRemoval = (Boolean) values.get(0);
-					linkedProperty.setOrphanRemoval(orphanRemoval);				}
+					linkedProperty.setOrphanRemoval(orphanRemoval);
+				}
 				break;
 			case FMLinkedProperty.fetchField:
 				if (values.get(0) instanceof EnumerationLiteral) {

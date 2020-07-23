@@ -1,7 +1,6 @@
 package myplugin.generator.fmmodel;
 
 public class FMPeristantProperty extends FMProperty {
-	
 	public static final String isKeyField = "isKey";
 	public static final String isUniqueField = "isUnique";
 	public static final String lengthField = "length";
@@ -25,6 +24,9 @@ public class FMPeristantProperty extends FMProperty {
 	
 	public FMPeristantProperty(FMProperty property) {
 		super(property.getMagicDrawId(), property.getName(), property.getType(), property.getVisibility(), property.getLower(), property.getUpper());
+		super.setColumnName(property.getColumnName());
+		super.setCreateSetter(property.isCreateSetter());
+		super.setCreateGetter(property.isCreateGetter());
 		key = false;
 		unique = false;
 		generator = FMGeneratorType.NONE;

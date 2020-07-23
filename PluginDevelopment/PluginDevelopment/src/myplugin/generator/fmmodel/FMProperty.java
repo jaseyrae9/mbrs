@@ -1,6 +1,10 @@
 package myplugin.generator.fmmodel;
 
 public class FMProperty extends FMElement {
+	public static final String columnNameField = "columnName";
+	public static final String createSetterField = "generateSetter";
+	public static final String createGetterField = "generateGetter";
+	
 	// Property type
 	private FMType type;
 	// Property visibility (public, private, protected, package)
@@ -9,9 +13,11 @@ public class FMProperty extends FMElement {
 	private Integer lower;
 	// Multiplicity (upper value)
 	private Integer upper;
+	//Naziv kolone ovog propertya
+	private String columnName;
 	// Da li je potrebno u okviru klasu u modelu napraviti getter i setter
-	private boolean createSetter;
-	private boolean createGetter;
+	private Boolean createSetter;
+	private Boolean createGetter;
 	// Da li se obelezje cuva u bazi podataka
 	private boolean persistant;
 	// Potrebno za generisanje importa i Feign klasa
@@ -92,5 +98,13 @@ public class FMProperty extends FMElement {
 
 	public void setFeign(boolean isFeign) {
 		this.feign = isFeign;
+	}
+
+	public String getColumnName() {
+		return columnName;
+	}
+
+	public void setColumnName(String columnName) {
+		this.columnName = columnName;
 	}
 }

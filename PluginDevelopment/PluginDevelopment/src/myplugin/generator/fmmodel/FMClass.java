@@ -136,10 +136,12 @@ public class FMClass extends FMType {
 		return keyType.getDefaultValue();
 	}
 	
-	public List<FMProperty> getPropertiesForPost(){
+	public List<FMProperty> getEditableProperties(){
 		List<FMProperty> ret = this.fmProperties.stream()
 				.filter(p -> p.isCreateSetter() && p.isPersistant() && p.getUpper() == 1)
 				.collect(Collectors.toList());
+		//izbaci kljuc
+		ret.remove(getKey());
 		//izbaciti one koji imaju generisanje
 		List<FMProperty> generated = ret.stream()
 				.filter(p -> p instanceof FMPeristantProperty)

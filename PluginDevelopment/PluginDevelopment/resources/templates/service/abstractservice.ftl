@@ -9,9 +9,19 @@ import io.micronaut.data.model.Pageable;
 import generated.model${package}.${name};
 import handwritten.repository${package}.${name}Repository;
 
+<#list feigns as feign>
+import generated.dto.feign.AbstractFeign${feign.type.name}DTO;
+import handwritten.feignclient.${feign.type.name}FeignClient;	
+</#list>
+
 public abstract class Abstract${name}Service{	
 	@Inject
 	protected ${name}Repository repo;
+	
+	<#list feigns as feign>
+	@Inject
+	protected ${feign.type.name}FeignClient ${feign.type.name?lower_case}FeignClient;	
+	</#list>
 	
 	<#if generateReadAll>
 	public Page<${name}> findAll(Pageable pageable) {
@@ -31,6 +41,12 @@ public abstract class Abstract${name}Service{
 	</#if>	
 	<#if generateCreate || generateUpdate>
 	<#if generateCreate>public<#else>private</#if> ${name} save(${name} entity) {
+		<#list feigns as feign>
+		AbstractFeign${feign.type.name}DTO ${feign.type.name?lower_case} = ${feign.type.name?lower_case}FeignClient.getOne(entity.get${feign.name?cap_first}());
+		if(${feign.type.name?lower_case} == null) {
+			throw new EntityNotFoundException("No row with the given identifier exists: [ ${feign.type.name}:" + entity.get${feign.name?cap_first}() +"]");
+		}
+		</#list>
 		return repo.update(entity);
 	}
 	

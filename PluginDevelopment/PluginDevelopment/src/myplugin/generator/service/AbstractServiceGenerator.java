@@ -1,6 +1,7 @@
 package myplugin.generator.service;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import myplugin.generator.PerClassGenerator;
 import myplugin.generator.fmmodel.FMClass;
@@ -24,5 +25,6 @@ public class AbstractServiceGenerator extends PerClassGenerator{
 		context.put("generateDelete", fmClass.isGenerateDelete());
 		context.put("key", fmClass.getKeyType().getName());
 		context.put("properties", fmClass.getEditableProperties());
+		context.put("feigns", fmClass.getEditableProperties().stream().filter(p -> p.getFeign()).collect(Collectors.toList()));
 	}
 }

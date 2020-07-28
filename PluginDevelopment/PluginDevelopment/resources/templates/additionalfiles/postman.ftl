@@ -60,7 +60,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{<#if class.properties?size !=0><#list class.propertiesForPost as property>\n\t\"${property.name}\": <#if property.feign>${property.type.keyDefaultValue}<#else>${property.type.defaultValue}</#if><#sep>,</#sep></#list>\n</#if>}",
+							"raw": "{<#if class.properties?size !=0><#list class.editableProperties as property>\n\t\"${property.name}\": <#if property.feign>${property.type.keyDefaultValue}<#else>${property.type.defaultValue}</#if><#sep>,</#sep></#list>\n</#if>}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -90,7 +90,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{<#if class.properties?size !=0><#list class.propertiesForPost as property>\n\t\"${property.name}\": <#if property.feign>${property.type.keyDefaultValue}<#else>${property.type.defaultValue}</#if><#sep>,</#sep></#list>\n</#if>}",
+							"raw": "{<#if class.properties?size !=0><#list class.editableProperties as property>\n\t\"${property.name}\": <#if property.feign>${property.type.keyDefaultValue}<#else>${property.type.defaultValue}</#if><#sep>,</#sep></#list>\n</#if>}",
 							"options": {
 								"raw": {
 									"language": "json"

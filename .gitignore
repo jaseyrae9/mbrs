@@ -2,6 +2,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,m2e,maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,m2e,maven
 
+
+### Magic Draw###
+*.bak
+
 ### Eclipse ###
 .metadata
 bin/
